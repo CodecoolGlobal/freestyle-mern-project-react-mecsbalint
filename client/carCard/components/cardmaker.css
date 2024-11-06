@@ -1,0 +1,17 @@
+.custom-font-size{
+    font-size: 13px;
+}
+
+.img-icons{
+    height: 25px;
+    width: 50px !important;
+}
+
+.handcard{
+    scale: 80%;
+}
+
+.handcard:hover{
+    z-index: 10;
+    scale: 100%;
+}
