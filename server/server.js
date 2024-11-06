@@ -63,6 +63,45 @@ async function createCars() {
 
 //   createCars();
 
+function drawCardIndexes(drawnCardNumbers) {
+  const randomNumbers = [];
+  while (randomNumbers.length < drawnCardNumbers) {
+    let randomNumber = Math.floor(Math.random() * 30);
+    if (!randomNumbers.includes(randomNumber)) {
+      randomNumbers.push(randomNumber)
+    }
+  }
+  return randomNumbers;
+}
+
+async function findAllCards() {
+  const data = await Car.find();
+  return data;
+}
+
+app.get('/api/cards', async (req, res) => {
+  const allCards = await findAllCards();
+  const drawnCardsIndexes = drawCardIndexes(20);
+  const yourHand = [];
+  const aiHand = [];
+  const yourTalon = [];
+  const aiTalon = [];
+  for (let i = 0; i < drawnCardsIndexes.length; i++) {
+    let cardIndex = drawnCardsIndexes[i];
+    if (i < drawnCardsIndexes.length / 4) {
+      yourHand.push(allCards[cardIndex]);
+    } else if (i >= drawnCardsIndexes.length / 4 && i < drawnCardsIndexes.length / 2) {
+      aiHand.push(allCards[cardIndex]);
+    } else if (i >= drawnCardsIndexes.length / 2 && i < drawnCardsIndexes.length / 4 * 3) {
+      yourTalon.push(allCards[cardIndex]);
+    } else {
+      aiTalon.push(allCards[cardIndex]);
+    }
+  }
+  const cardsToSend = [yourHand, aiHand, yourTalon, aiTalon];
+  res.json(cardsToSend);
+})
+
 app.listen(port, () => {
     console.log('Your server is running on port: ', port);
 })
