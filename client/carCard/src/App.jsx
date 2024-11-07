@@ -17,16 +17,26 @@ function App() {
   const [playerScore, setPlayerScore] = useState(null);
   const [phase, setPhase] = useState("start");
 
-  return (
-    <>
-    
-    </>
-  );
+  switch (phase) {
+    case "start":
+      //Zoli call here
+      break;
+    case "collect data":
+      // Kristof call here
+      break;
+    case "match":
+      // Balint call here
+      break;
+    case "result":
+      //Zoli call here
+      break;
+  }
 }
 
 export default App;
 
-{/* <div className="container-fluid game-board">
+{
+  /* <div className="container-fluid game-board">
   <HeadLine enemyScore={enemyScore} playerScore={playerScore}></HeadLine>
 
   <div className="center-line"></div>
@@ -47,4 +57,5 @@ export default App;
 
     </div>
   </div>
-</div> */}
+</div> */
+}
