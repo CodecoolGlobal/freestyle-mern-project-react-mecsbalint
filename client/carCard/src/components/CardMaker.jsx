@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 import "./cardmaker.css";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
@@ -12,8 +11,8 @@ import { FuelPump } from "react-bootstrap-icons";
 function CardMaker({ card }) {
   return (
     <Col xs="2" className="handcard">
-      <Card data-bs-theme="dark" className="p-1" style={{ width: "15rem" }}>
-        <Card.Title className="border border-primary rounded p-2">
+      <Card data-bs-theme="dark" className="p-2" style={{ width: "15rem" }}>
+        <Card.Title className="border border-primary rounded px-2" style={{height: "53px"}}>
           {card.brand}-{card.model}({card.year})
         </Card.Title>
         <Card.Img
@@ -46,7 +45,7 @@ function CardMaker({ card }) {
                 </Container>
               </Col>
             </Row>
-            <Row>
+            <Row className="">
               <Col className="border border-primary rounded m-1 p-1" size="md">
                 <Container className="">
                   <Row>
@@ -55,7 +54,7 @@ function CardMaker({ card }) {
                       src="../src/assets/cylinders.png"
                     ></img>
                   </Row>
-                  <Row className="custom-font-size text-center m-auto">
+                  <Row className="custom-font-size text-center m-auto middleRowHeightFixer">
                     {card.cylinders}
                   </Row>
                 </Container>

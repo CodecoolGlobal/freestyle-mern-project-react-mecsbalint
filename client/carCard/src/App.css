@@ -1,3 +1,39 @@
-.handdiv{
-    margin-top: 1000px;
-}
+    /* Style for the game board */
+    .game-board {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px;
+      }
+  
+      .top-section .score {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+  
+      .start-btn {
+        display: inline-block;
+      }
+  
+      .bottom-section {
+        text-align: center;
+      }
+
+          /* Style for the vertical line in the center */
+    .center-line {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 2px;
+        background-color: black;
+        z-index: 0;
+      }
+  
+      /* Styles for top and bottom sections */
+      .top-section, .bottom-section {
+        position: relative;
+        z-index: 1;
+      }

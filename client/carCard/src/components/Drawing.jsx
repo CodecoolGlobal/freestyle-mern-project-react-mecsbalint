@@ -1,3 +1,6 @@
+import Button from "react-bootstrap/Button";
+import "./drawing.css";
+
 async function fetchData() {
   const response = await fetch('/api/cards');
   const data = await response.json();
@@ -14,8 +17,7 @@ function Drawing({onDrawYourCards, onDrawAiCards, onDrawYourTalon, onDrawAiTalon
       onDrawAiTalon(data[3]);
     }
 
-    return(
-      <button onClick={handleClick}>Start</button>)
+    return(<Button className="m-auto startBtn" onClick={handleClick}>Start</Button>)
       
 }
 
