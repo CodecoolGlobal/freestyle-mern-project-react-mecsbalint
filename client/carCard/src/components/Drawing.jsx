@@ -7,7 +7,7 @@ async function fetchData() {
   return data;
 }
 
-function Drawing({onDrawYourCards, onDrawAiCards, onDrawYourTalon, onDrawAiTalon}) {
+function Drawing({onDrawYourCards, onDrawAiCards, onDrawYourTalon, onDrawAiTalon, onSetPhase}) {
     async function handleClick() {
       const data = await fetchData()
       onDrawYourCards(data[0]);
@@ -15,9 +15,10 @@ function Drawing({onDrawYourCards, onDrawAiCards, onDrawYourTalon, onDrawAiTalon
       onDrawYourTalon(data[2]);
       console.log(data[0])
       onDrawAiTalon(data[3]);
+      onSetPhase("Match");
     }
 
-    return(<Button className="m-auto startBtn" onClick={handleClick}>Start</Button>)
+    return(<Button className="btn btn-primary start-btn" onClick={handleClick}>Start</Button>)
       
 }
 

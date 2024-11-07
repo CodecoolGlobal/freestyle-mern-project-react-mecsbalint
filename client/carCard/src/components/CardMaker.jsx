@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import "./cardmaker.css";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
@@ -8,10 +8,10 @@ import { Speedometer } from "react-bootstrap-icons";
 import { Stopwatch } from "react-bootstrap-icons";
 import { FuelPump } from "react-bootstrap-icons";
 
-function CardMaker({ card }) {
+function CardMaker({ card , onHandleClick}) {
   return (
     <Col xs="2" className="handcard">
-      <Card data-bs-theme="dark" className="p-2" style={{ width: "15rem" }}>
+      <Card data-bs-theme="dark" className="p-2" onClick={(event) => onHandleClick(event, card)} style={{ width: "15rem" }}>
         <Card.Title className="border border-primary rounded px-2" style={{height: "53px"}}>
           {card.brand}-{card.model}({card.year})
         </Card.Title>
@@ -24,7 +24,7 @@ function CardMaker({ card }) {
         <Card.Body>
           <Container className="">
             <Row>
-              <Col className="border border-primary rounded m-1 p-1">
+              <Col className="border border-primary rounded m-1 p-1" onClick={(event)=> onHandleClick(event, card, "Top Speed", card.topSpeed)}>
                 <Container className="">
                   <Row>
                     <Speedometer color="royalblue" size={20} />

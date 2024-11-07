@@ -5,49 +5,46 @@ import CardMaker from "./components/CardMaker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import HeadLine from "./components/HeadLine";
+import Match from "./components/Match";
 
 function App() {
   const [yourCards, setYourCards] = useState(null);
   const [aiCards, setAiCards] = useState(null);
   const [yourTalon, setYourTalon] = useState(null);
   const [aiTalon, setAiTalon] = useState(null);
+  const [enemyScore, setEnemyScore] = useState(null);
+  const [playerScore, setPlayerScore] = useState(null);
+  const [phase, setPhase] = useState("start");
 
   return (
     <>
-      <div className="container-fluid game-board">
-        <div className="top-section">
-          <div className="score">
-            <div>My score</div>
-            <button className="btn btn-primary start-btn">START</button>
-            <div>Enemy score</div>
-          </div>
-        </div>
-
-        <div className="center-line"></div>
-
-        <div className="bottom-section">
-          <div>
-            <Drawing
-              onDrawYourCards={setYourCards}
-              onDrawAiCards={setAiCards}
-              onDrawYourTalon={setYourTalon}
-              onDrawAiTalon={setAiTalon}
-            ></Drawing>
-            <Container
-              className="col-6 d-flex flex-column justify-content-end align-items-center"
-              style={{ minHeight: "100vh" }}
-            >
-              <Row className="handdiv justify-content-center">
-                {yourCards
-                  ? yourCards.map((card) => <CardMaker card={card} />)
-                  : ""}
-              </Row>
-            </Container>
-          </div>
-        </div>
-      </div>
+    
     </>
   );
 }
 
 export default App;
+
+{/* <div className="container-fluid game-board">
+  <HeadLine enemyScore={enemyScore} playerScore={playerScore}></HeadLine>
+
+  <div className="center-line"></div>
+
+  <div className="bottom-section">
+    <div>
+      {phase === "start" ? (
+        <Drawing
+          onDrawYourCards={setYourCards}
+          onDrawAiCards={setAiCards}
+          onDrawYourTalon={setYourTalon}
+          onDrawAiTalon={setAiTalon}
+          onSetPhase={setPhase}
+        ></Drawing>
+      ) : (
+        <Match yourCards={yourCards}></Match>
+      )}
+
+    </div>
+  </div>
+</div> */}
