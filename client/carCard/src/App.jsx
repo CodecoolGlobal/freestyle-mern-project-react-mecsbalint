@@ -19,7 +19,7 @@ function App() {
 
   return (
     <>
-    
+    <Drawing onDrawYourCards={setYourCards} onDrawAiCards={setAiCards} onDrawYourTalon={setYourTalon} onDrawAiTalon={setAiTalon} onSetPhase={setPhase}></Drawing>
     </>
   );
 }

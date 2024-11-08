@@ -18,7 +18,9 @@ function Drawing({onDrawYourCards, onDrawAiCards, onDrawYourTalon, onDrawAiTalon
       onSetPhase("Match");
     }
 
-    return(<Button className="btn btn-primary start-btn" onClick={handleClick}>Start</Button>)
+    return(<div className="drawing">
+      <h2 className="title">Welcome to CarWars game!</h2>
+      <Button className="btn btn-primary start-btn startButton" onClick={handleClick}>Start the game!</Button></div>)
       
 }
 
