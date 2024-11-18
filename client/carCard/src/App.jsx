@@ -89,6 +89,13 @@ function App() {
           isPlayerTurn={isPlayerTurn}
         ></CollectData>
       )}
+      {phase === "match" &&  <Encounter
+          onChangeHeadlineData={setHeadlineData}
+          cards={cards}
+          onChangeCards={setCards}
+          selectedCarAttribute={selectedCarAttribute}
+          onCHangePhase={setPhase}
+        />}
     </>
   );
 }
