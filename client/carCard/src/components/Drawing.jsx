@@ -15,7 +15,7 @@ function Drawing({onDrawYourCards, onDrawAiCards, onDrawYourTalon, onDrawAiTalon
       onDrawYourTalon(data[2]);
       console.log(data[0])
       onDrawAiTalon(data[3]);
-      onSetPhase("Match");
+      onSetPhase("collect data");
     }
 
     return(<Button className="btn btn-primary start-btn" onClick={handleClick}>Start</Button>)
