@@ -1,9 +1,12 @@
-.startBtn{
+.drawingPage{
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 0%;
+    background-image: url('../assets/backgrounds/start.png');
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
 }
 
-.start-btn {
-    display: inline-block;
-  }
+.Loading{
+    margin-top: 40vh;
+}
