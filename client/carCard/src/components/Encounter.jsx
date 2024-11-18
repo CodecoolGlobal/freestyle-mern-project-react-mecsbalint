@@ -2,13 +2,12 @@
 import { useEffect } from "react";
 import HeadLine from "./HeadLine";
 
-function Encounter({onHandleEncounter, enemyScore, playerScore, playerSelectedCard, aiSelectedCard, category}) {
-    useEffect(() => {
-        onHandleEncounter();
-    }, []);
+function Encounter({onHandleEncounter}) {
+
     return (
         <>
-        <HeadLine enemyScore={enemyScore} playerScore={playerScore}/>
+        <h1>Encounter test</h1>
+        <button type="button" onClick={onHandleEncounter}>Fight</button>
         </>
     )
 }
