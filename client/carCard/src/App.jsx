@@ -1,10 +1,9 @@
-import { useState } from "react";
+/* eslint-disable no-unused-vars */
+import { useEffect, useState } from "react";
 import "./App.css";
 import Drawing from "./components/Drawing";
-import CardMaker from "./components/CardMaker";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
+import CollectData from "./components/CollectData";
 import HeadLine from "./components/HeadLine";
 import Match from "./components/Match";
 import Encounter from "./components/Encounter";
@@ -17,10 +16,11 @@ function App() {
   const [enemyScore, setEnemyScore] = useState(null);
   const [playerScore, setPlayerScore] = useState(null);
   const [phase, setPhase] = useState("start");
+  const [isPlayerTurn, setIsPlayerTurn] = useState(true);
   const [playerSelectedCard, setPlayerSelectedCard] = useState(null);
   const [aiSelectedCard, setAiSelectedCard] = useState(null);
-  const [category, setCategory] = useState(null);
-  const [isPlayerTurn, setIsPLayerTurn] = useState(true);
+  const [selectedCarAttribute, setSelectedCarAttribute] = useState(null);
+  const [message, setMessage] = useState('Start the game');
 
   function updateCards() {
     const yourCardsTest = [...yourCards];
@@ -41,12 +41,12 @@ function App() {
   }
 
   function handleEncounter() {
-    if (["acceleration", "consumption", "weight"].includes(category)) {
-      aiSelectedCard[category] - playerSelectedCard[category] > 0
+    if (["acceleration", "consumption", "weight"].includes(selectedCarAttribute)) {
+      aiSelectedCard[selectedCarAttribute] - playerSelectedCard[selectedCarAttribute] > 0
         ? setPlayerScore(() => playerScore + 1)
         : setEnemyScore(() => enemyScore + 1);
     } else {
-      playerSelectedCard[category] - aiSelectedCard[category] > 0
+      playerSelectedCard[selectedCarAttribute] - aiSelectedCard[selectedCarAttribute] > 0
         ? setPlayerScore(() => playerScore + 1)
         : setEnemyScore(() => enemyScore + 1);
     }
@@ -58,39 +58,47 @@ function App() {
     }
   }
 
-  function createDummyData() {
-    setCategory(
-      ["acceleration", "consumption", "weight"][Math.floor(Math.random() * 3)]
-    );
-    setPlayerSelectedCard(
-      yourCards[Math.floor(Math.random() * yourCards.length)]
-    );
-    setAiSelectedCard(aiCards[Math.floor(Math.random() * aiCards.length)]);
-    enemyScore ?? setEnemyScore(0);
-    playerScore ?? setPlayerScore(0);
-    setPhase("match");
-  }
+  useEffect(() => {
+     <HeadLine playerScore={playerScore} enemyScore={enemyScore} message={message}></HeadLine>
+  }, [message])
 
   switch (phase) {
     case "start":
       return (
+        <>
+        <HeadLine playerScore={playerScore} enemyScore={enemyScore} message={message}></HeadLine>
         <Drawing
           onDrawYourCards={setYourCards}
           onDrawAiCards={setAiCards}
           onDrawYourTalon={setYourTalon}
           onDrawAiTalon={setAiTalon}
           onSetPhase={setPhase}
-        />
+          onSetMessage={setMessage}
+        ></Drawing>
+        </>
       );
     case "collect data":
-      return <>{createDummyData()}</>;
+     
+      return (
+        <CollectData
+          yourCards={yourCards}
+          aiHand={aiCards}
+          onSetIsPlayerTurn={setIsPlayerTurn}
+          onSetPlayerSelectedCard={setPlayerSelectedCard}
+          onSetAiSelectedCard={setAiSelectedCard}
+          onSetSelectedCarAttribute={setSelectedCarAttribute}
+          onIsPlayerTurn={isPlayerTurn}
+          onPlayerSelectedCard={playerSelectedCard}
+          onAiSelectedCard={aiSelectedCard}
+          onSetPhase={setPhase}
+          onSelectedCarAttribute={selectedCarAttribute}
+        />
+      );
     case "match":
       return <Encounter onHandleEncounter={handleEncounter} />;
+      
     case "result":
       //Zoli call here
-      <>
-        <h1>The End</h1>
-      </>;
       break;
   }
 }
@@ -98,6 +106,7 @@ function App() {
 export default App;
 
 {
+  
   /* <div className="container-fluid game-board">
   <HeadLine enemyScore={enemyScore} playerScore={playerScore}></HeadLine>
 
@@ -106,13 +115,7 @@ export default App;
   <div className="bottom-section">
     <div>
       {phase === "start" ? (
-        <Drawing
-          onDrawYourCards={setYourCards}
-          onDrawAiCards={setAiCards}
-          onDrawYourTalon={setYourTalon}
-          onDrawAiTalon={setAiTalon}
-          onSetPhase={setPhase}
-        ></Drawing>
+
       ) : (
         <Match yourCards={yourCards}></Match>
       )}

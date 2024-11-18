@@ -8,11 +8,24 @@ import { Speedometer } from "react-bootstrap-icons";
 import { Stopwatch } from "react-bootstrap-icons";
 import { FuelPump } from "react-bootstrap-icons";
 
-function CardMaker({ card , onHandleClick}) {
+function CardMaker({
+  card,
+  onSetPlayerSelectedCard,
+  onSetSelectedCarAttribute,
+  onSetIsPlayerTurn
+}) {
   return (
     <Col xs="2" className="handcard">
-      <Card data-bs-theme="dark" className="p-2" onClick={(event) => onHandleClick(event, card)} style={{ width: "15rem" }}>
-        <Card.Title className="border border-primary rounded px-2" style={{height: "53px"}}>
+      <Card
+        data-bs-theme="dark"
+        className="p-2"
+        style={{ width: "15rem" }}
+        onClick={() => onSetPlayerSelectedCard(card)}
+      >
+        <Card.Title
+          className="border border-primary rounded px-2"
+          style={{ height: "53px" }}
+        >
           {card.brand}-{card.model}({card.year})
         </Card.Title>
         <Card.Img
@@ -24,7 +37,13 @@ function CardMaker({ card , onHandleClick}) {
         <Card.Body>
           <Container className="">
             <Row>
-              <Col className="border border-primary rounded m-1 p-1" onClick={(event)=> onHandleClick(event, card, "Top Speed", card.topSpeed)}>
+              <Col
+                className="border border-primary rounded m-1 p-1"
+                onClick={() => {
+                  onSetSelectedCarAttribute("topSpeed");
+                  onSetIsPlayerTurn(false);
+                }}
+              >
                 <Container className="">
                   <Row>
                     <Speedometer color="royalblue" size={20} />
@@ -34,7 +53,13 @@ function CardMaker({ card , onHandleClick}) {
                   </Row>
                 </Container>
               </Col>
-              <Col className="border border-primary rounded m-1 p-1">
+              <Col
+                className="border border-primary rounded m-1 p-1"
+                onClick={() => {
+                  onSetSelectedCarAttribute("acceleration");
+                  onSetIsPlayerTurn(false);
+                }}
+              >
                 <Container>
                   <Row>
                     <Stopwatch color="royalblue" size={20}></Stopwatch>
@@ -46,7 +71,13 @@ function CardMaker({ card , onHandleClick}) {
               </Col>
             </Row>
             <Row className="">
-              <Col className="border border-primary rounded m-1 p-1" size="md">
+              <Col
+                className="border border-primary rounded m-1 p-1"
+                onClick={() => {
+                  onSetSelectedCarAttribute("cylinders");
+                  onSetIsPlayerTurn(false);
+                }}
+              >
                 <Container className="">
                   <Row>
                     <img
@@ -59,7 +90,13 @@ function CardMaker({ card , onHandleClick}) {
                   </Row>
                 </Container>
               </Col>
-              <Col className="border border-primary rounded m-1 p-1" size="md">
+              <Col
+                className="border border-primary rounded m-1 p-1"
+                onClick={() => {
+                  onSetSelectedCarAttribute("consumption");
+                  onSetIsPlayerTurn(false);
+                }}
+              >
                 <Container>
                   <Row>
                     <FuelPump color="royalblue" size={20}></FuelPump>
@@ -71,7 +108,13 @@ function CardMaker({ card , onHandleClick}) {
               </Col>
             </Row>
             <Row>
-              <Col className="border border-primary rounded m-1 p-1" size="md">
+              <Col
+                className="border border-primary rounded m-1 p-1"
+                onClick={() => {
+                  onSetSelectedCarAttribute("weight");
+                  onSetIsPlayerTurn(false);
+                }}
+              >
                 <Container className="">
                   <Row>
                     <img
@@ -84,7 +127,13 @@ function CardMaker({ card , onHandleClick}) {
                   </Row>
                 </Container>
               </Col>
-              <Col className="border border-primary rounded m-1 p-1" size="md">
+              <Col
+                className="border border-primary rounded m-1 p-1"
+                onClick={() => {
+                  onSetSelectedCarAttribute("horsepower");
+                  onSetIsPlayerTurn(false);
+                }}
+              >
                 <Container className="">
                   <Row>
                     <img

@@ -37,3 +37,10 @@
         position: relative;
         z-index: 1;
       }
+
+      .whitebox{
+        margin-top: 40vh;
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 20px;
+        border-radius: 2rem;
+      }
