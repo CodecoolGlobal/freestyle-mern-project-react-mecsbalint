@@ -10,7 +10,7 @@ import { FuelPump } from "react-bootstrap-icons";
 
 function CardMaker({
   card,
-  onSetPlayerSelectedCard,
+  onSetCards,
   onSetSelectedCarAttribute,
   onSetIsPlayerTurn
 }) {
@@ -20,7 +20,10 @@ function CardMaker({
         data-bs-theme="dark"
         className="p-2"
         style={{ width: "15rem" }}
-        onClick={() => onSetPlayerSelectedCard(card)}
+        onClick={() => onSetCards((prev) => ({
+          ...prev,
+          playerSelectedCard: card
+        }))}
       >
         <Card.Title
           className="border border-primary rounded px-2"

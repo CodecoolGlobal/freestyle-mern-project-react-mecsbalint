@@ -1,7 +1,7 @@
 .drawingPage{
     position: absolute;
     top: 0%;
-    background-image: url('../assets/backgrounds/start.png');
+    background-image: url('../../assets/backgrounds/start.png');
     background-position: center;
     background-size: cover;
     z-index: -1;
