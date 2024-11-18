@@ -1,0 +1,27 @@
+.background{
+    position: absolute;
+    top: 0%;
+    background-image: url('../../assets/backgrounds/collectData.jpg');
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+}
+
+.matchPic{
+    border-radius: 3rem;
+}
+
+.carAttributeText{
+    font-size: 2rem;
+    color: black;  
+}
+
+.nextRoundBtn{
+position: absolute;
+top: 50%;
+left: 47%;
+}
+
+.matchDataDiv{
+    margin-top: 30vh;
+}

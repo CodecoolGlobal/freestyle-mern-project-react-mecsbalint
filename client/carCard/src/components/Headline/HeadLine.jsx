@@ -9,7 +9,7 @@ function HeadLine({headlineData}) {
     <Container fluid className="text-center scoreboard col-6 text-light">
       <Row>
         <Col>{headlineData.playerScore}</Col>
-        <Col>{headlineData.message}</Col>
+        <Col xs={6}>{headlineData.message}</Col>
         <Col>{headlineData.enemyScore}</Col>
       </Row>
     </Container>
