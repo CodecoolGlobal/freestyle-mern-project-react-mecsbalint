@@ -33,8 +33,12 @@ function Drawing({
       onDrawYourTalon(data[2]);
       onDrawAiTalon(data[3]);
       onSetPhase("collect data");
+<<<<<<< HEAD
+    }
+=======
     }, 3000);
   }
+>>>>>>> development
 
   return (
     <Container fluid className="drawingPage" style={{ height: "100vh" }}>
