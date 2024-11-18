@@ -1,6 +1,6 @@
 
 .scoreboard{
-    background-image: url('../assets/scoreboard.png');
+    background-image: url('../../assets/scoreboard.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

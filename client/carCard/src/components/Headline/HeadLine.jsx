@@ -4,13 +4,13 @@ import "./headline.css";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 
-function HeadLine({enemyScore, playerScore, message}) {
+function HeadLine({headlineData}) {
   return (
     <Container fluid className="text-center scoreboard col-6 text-light">
       <Row>
-        <Col>{playerScore}</Col>
-        <Col>{message}</Col>
-        <Col>{enemyScore}</Col>
+        <Col>{headlineData.playerScore}</Col>
+        <Col>{headlineData.message}</Col>
+        <Col>{headlineData.enemyScore}</Col>
       </Row>
     </Container>
   );

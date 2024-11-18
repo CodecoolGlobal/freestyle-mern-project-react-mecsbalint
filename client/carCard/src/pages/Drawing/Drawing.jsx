@@ -3,9 +3,8 @@ import Button from "react-bootstrap/Button";
 import "./drawing.css";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
-import HeadLine from "./HeadLine";
 import { useState } from "react";
-import Loading from "./Loading/Loading";
+import Loading from "../../components/Loading/Loading";
 
 async function fetchData() {
   const response = await fetch("/api/cards");
@@ -14,31 +13,29 @@ async function fetchData() {
 }
 
 function Drawing({
-  onDrawYourCards,
-  onDrawAiCards,
-  onDrawYourTalon,
-  onDrawAiTalon,
-  onSetPhase,
-  onSetMessage,
+  onSetHeadlineData,
+  onSetCards,
+  onSetPhase
 }) {
   const [isLoading, setIsLoading] = useState(false);
 
   async function handleClick() {
-    onSetMessage("Generating decks!");
+    onSetHeadlineData((prev) => ({
+      ...prev, message: 'Generating decks!'
+    }))
     setIsLoading(true);
+    const data = await fetchData();
+    onSetCards((prev) => ({
+      ...prev,
+      playerCards: data.playerCards,
+      aiCards: data.aiCards,
+      playerDeck: data.playerDeck,
+      aiDeck: data.aiDeck
+    }))
     setTimeout(async () => {
-      const data = await fetchData();
-      onDrawYourCards(data[0]);
-      onDrawAiCards(data[1]);
-      onDrawYourTalon(data[2]);
-      onDrawAiTalon(data[3]);
       onSetPhase("collect data");
-<<<<<<< HEAD
-    }
-=======
     }, 3000);
   }
->>>>>>> development
 
   return (
     <Container fluid className="drawingPage" style={{ height: "100vh" }}>

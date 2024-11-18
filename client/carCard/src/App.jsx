@@ -1,26 +1,29 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import "./App.css";
-import Drawing from "./components/Drawing";
+import Drawing from "./pages/Drawing/Drawing";
 import "bootstrap/dist/css/bootstrap.min.css";
-import CollectData from "./components/CollectData";
-import HeadLine from "./components/HeadLine";
-import Match from "./components/Match";
+import CollectData from "./pages/CollectData/CollectData";
+import HeadLine from "./components/Headline/HeadLine";
 import Encounter from "./components/Encounter";
 
 function App() {
-  const [yourCards, setYourCards] = useState(null);
-  const [aiCards, setAiCards] = useState(null);
-  const [yourTalon, setYourTalon] = useState(null);
-  const [aiTalon, setAiTalon] = useState(null);
-  const [enemyScore, setEnemyScore] = useState(null);
-  const [playerScore, setPlayerScore] = useState(null);
-  const [phase, setPhase] = useState("start");
   const [isPlayerTurn, setIsPlayerTurn] = useState(true);
-  const [playerSelectedCard, setPlayerSelectedCard] = useState(null);
-  const [aiSelectedCard, setAiSelectedCard] = useState(null);
+  const [phase, setPhase] = useState("start");
   const [selectedCarAttribute, setSelectedCarAttribute] = useState(null);
-  const [message, setMessage] = useState('Start the game');
+  const [cards, setCards] = useState({
+    playerCards: [],
+    aiCards: [],
+    playerDeck: [],
+    aiDeck: [],
+    playerSelectedCard: null,
+    aiSelectedCard: null,
+  });
+  const [headlineData, setHeadlineData] = useState({
+    enemyScore: null,
+    playerScore: null,
+    message: "Start game",
+  });
 
   function updateCards() {
     const yourCardsTest = [...yourCards];
@@ -41,12 +44,18 @@ function App() {
   }
 
   function handleEncounter() {
-    if (["acceleration", "consumption", "weight"].includes(selectedCarAttribute)) {
-      aiSelectedCard[selectedCarAttribute] - playerSelectedCard[selectedCarAttribute] > 0
+    if (
+      ["acceleration", "consumption", "weight"].includes(selectedCarAttribute)
+    ) {
+      aiSelectedCard[selectedCarAttribute] -
+        playerSelectedCard[selectedCarAttribute] >
+      0
         ? setPlayerScore(() => playerScore + 1)
         : setEnemyScore(() => enemyScore + 1);
     } else {
-      playerSelectedCard[selectedCarAttribute] - aiSelectedCard[selectedCarAttribute] > 0
+      playerSelectedCard[selectedCarAttribute] -
+        aiSelectedCard[selectedCarAttribute] >
+      0
         ? setPlayerScore(() => playerScore + 1)
         : setEnemyScore(() => enemyScore + 1);
     }
@@ -58,69 +67,31 @@ function App() {
     }
   }
 
-  useEffect(() => {
-     <HeadLine playerScore={playerScore} enemyScore={enemyScore} message={message}></HeadLine>
-  }, [message])
-
-  switch (phase) {
-    case "start":
-      return (
-        <>
-        <HeadLine playerScore={playerScore} enemyScore={enemyScore} message={message}></HeadLine>
+  return (
+    <>
+      <HeadLine headlineData={headlineData}></HeadLine>
+      {phase === "start" && (
         <Drawing
-          onDrawYourCards={setYourCards}
-          onDrawAiCards={setAiCards}
-          onDrawYourTalon={setYourTalon}
-          onDrawAiTalon={setAiTalon}
+          onSetHeadlineData={setHeadlineData}
+          onSetCards={setCards}
           onSetPhase={setPhase}
-          onSetMessage={setMessage}
         ></Drawing>
-        </>
-      );
-    case "collect data":
-     
-      return (
+      )}
+      {phase === "collect data" && (
         <CollectData
-          yourCards={yourCards}
-          aiHand={aiCards}
-          onSetIsPlayerTurn={setIsPlayerTurn}
-          onSetPlayerSelectedCard={setPlayerSelectedCard}
-          onSetAiSelectedCard={setAiSelectedCard}
-          onSetSelectedCarAttribute={setSelectedCarAttribute}
-          onIsPlayerTurn={isPlayerTurn}
-          onPlayerSelectedCard={playerSelectedCard}
-          onAiSelectedCard={aiSelectedCard}
+          onSetHeadlineData={setHeadlineData}
+          onSetCards={setCards}
           onSetPhase={setPhase}
-          onSelectedCarAttribute={selectedCarAttribute}
-        />
-      );
-    case "match":
-      return <Encounter onHandleEncounter={handleEncounter} />;
-      
-    case "result":
-      //Zoli call here
-      break;
-  }
+          cards={cards}
+          selectedCarAttribute={selectedCarAttribute}
+          onSetSelectedCarAttribute={setSelectedCarAttribute}
+          onSetIsPlayerTurn={setIsPlayerTurn}
+          isPlayerTurn={isPlayerTurn}
+        ></CollectData>
+      )}
+    </>
+  );
 }
 
 export default App;
 
-{
-  
-  /* <div className="container-fluid game-board">
-  <HeadLine enemyScore={enemyScore} playerScore={playerScore}></HeadLine>
-
-  <div className="center-line"></div>
-
-  <div className="bottom-section">
-    <div>
-      {phase === "start" ? (
-
-      ) : (
-        <Match yourCards={yourCards}></Match>
-      )}
-
-    </div>
-  </div>
-</div> */
-}

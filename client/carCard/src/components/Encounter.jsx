@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect } from "react";
-import HeadLine from "./HeadLine";
+import HeadLine from "./Headline/HeadLine";
 
 function Encounter({onHandleEncounter}) {
 
