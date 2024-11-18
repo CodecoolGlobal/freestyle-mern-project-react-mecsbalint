@@ -1,14 +1,18 @@
 /* eslint-disable react/prop-types */
+import Container from "react-bootstrap/esm/Container";
 import "./headline.css";
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
 
-function HeadLine({enemyScore, playerScore}) {
+function HeadLine({enemyScore, playerScore, message}) {
   return (
-    <div className="top-section">
-      <div className="score">
-        <div>{playerScore ? playerScore : ""}</div>
-        <div>{enemyScore ? enemyScore : ""}</div>
-      </div>
-    </div>
+    <Container fluid className="text-center scoreboard col-6 text-light">
+      <Row>
+        <Col>{playerScore}</Col>
+        <Col>{message}</Col>
+        <Col>{enemyScore}</Col>
+      </Row>
+    </Container>
   );
 }
 

@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Drawing from "./components/Drawing";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CollectData from "./components/CollectData";
+import HeadLine from "./components/HeadLine";
 
 function App() {
   const [yourCards, setYourCards] = useState(null);
@@ -17,18 +18,26 @@ function App() {
   const [playerSelectedCard, setPlayerSelectedCard] = useState(null);
   const [aiSelectedCard, setAiSelectedCard] = useState(null);
   const [selectedCarAttribute, setSelectedCarAttribute] = useState(null);
+  const [message, setMessage] = useState('Start the game');
+
+  useEffect(() => {
+     <HeadLine playerScore={playerScore} enemyScore={enemyScore} message={message}></HeadLine>
+  }, [message])
 
   switch (phase) {
     case "start":
-      //Zoli call here
       return (
+        <>
+        <HeadLine playerScore={playerScore} enemyScore={enemyScore} message={message}></HeadLine>
         <Drawing
           onDrawYourCards={setYourCards}
           onDrawAiCards={setAiCards}
           onDrawYourTalon={setYourTalon}
           onDrawAiTalon={setAiTalon}
           onSetPhase={setPhase}
+          onSetMessage={setMessage}
         ></Drawing>
+        </>
       );
     case "collect data":
       // {
