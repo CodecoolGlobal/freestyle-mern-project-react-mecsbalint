@@ -5,7 +5,6 @@ import Drawing from "./components/Drawing";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CollectData from "./components/CollectData";
 import HeadLine from "./components/HeadLine";
-import Match from "./components/Match";
 import Encounter from "./components/Encounter";
 
 function App() {
@@ -20,65 +19,50 @@ function App() {
   const [playerSelectedCard, setPlayerSelectedCard] = useState(null);
   const [aiSelectedCard, setAiSelectedCard] = useState(null);
   const [selectedCarAttribute, setSelectedCarAttribute] = useState(null);
-  const [message, setMessage] = useState('Start the game');
 
-  function updateCards() {
-    const yourCardsTest = [...yourCards];
-    const aiCardsTest = [...aiCards];
-    const yourTalonTest = [...yourTalon];
-    const aiTalonTest = [...aiTalon];
-    yourCardsTest.splice(yourCardsTest.indexOf(playerSelectedCard), 1);
-    aiCardsTest.splice(aiCardsTest.indexOf(aiSelectedCard), 1);
-    yourTalonTest.length > 0 &&
-      yourCardsTest.push(...yourTalonTest.splice(0, 1));
-    aiTalonTest.length > 0 && aiCardsTest.push(...aiTalonTest.splice(0, 1));
-    setAiCards(null);
-    setPlayerSelectedCard(null);
-    setYourCards(yourCardsTest);
-    setAiCards(aiCardsTest);
-    setYourTalon(yourTalonTest);
-    setAiTalon(aiTalonTest);
-  }
+  const [cards, setCards] = useState({
+    playerCards: [],
+    aiCards: [],
+    playerDeck: [],
+    aiDeck: [],
+    playerSelectedCard: null,
+    aiSelectedCard: null,
+  });
 
-  function handleEncounter() {
-    if (["acceleration", "consumption", "weight"].includes(selectedCarAttribute)) {
-      aiSelectedCard[selectedCarAttribute] - playerSelectedCard[selectedCarAttribute] > 0
-        ? setPlayerScore(() => playerScore + 1)
-        : setEnemyScore(() => enemyScore + 1);
-    } else {
-      playerSelectedCard[selectedCarAttribute] - aiSelectedCard[selectedCarAttribute] > 0
-        ? setPlayerScore(() => playerScore + 1)
-        : setEnemyScore(() => enemyScore + 1);
-    }
-    if (yourCards.length === 1) {
-      setPhase("result");
-    } else {
-      updateCards();
-      setPhase("collect data");
-    }
-  }
+  const [headlineData, setHeadlineData] = useState({
+    enemyScore: null,
+    playerScore: null,
+    message: "Start game",
+  });
 
   useEffect(() => {
-     <HeadLine playerScore={playerScore} enemyScore={enemyScore} message={message}></HeadLine>
-  }, [message])
+    <HeadLine
+      playerScore={playerScore}
+      enemyScore={enemyScore}
+      message={message}
+    ></HeadLine>;
+  }, [message]);
 
   switch (phase) {
     case "start":
       return (
         <>
-        <HeadLine playerScore={playerScore} enemyScore={enemyScore} message={message}></HeadLine>
-        <Drawing
-          onDrawYourCards={setYourCards}
-          onDrawAiCards={setAiCards}
-          onDrawYourTalon={setYourTalon}
-          onDrawAiTalon={setAiTalon}
-          onSetPhase={setPhase}
-          onSetMessage={setMessage}
-        ></Drawing>
+          <HeadLine
+            playerScore={playerScore}
+            enemyScore={enemyScore}
+            message={message}
+          ></HeadLine>
+          <Drawing
+            onDrawYourCards={setYourCards}
+            onDrawAiCards={setAiCards}
+            onDrawYourTalon={setYourTalon}
+            onDrawAiTalon={setAiTalon}
+            onSetPhase={setPhase}
+            onSetMessage={setMessage}
+          ></Drawing>
         </>
       );
     case "collect data":
-     
       return (
         <CollectData
           yourCards={yourCards}
@@ -95,8 +79,16 @@ function App() {
         />
       );
     case "match":
-      return <Encounter onHandleEncounter={handleEncounter} />;
-      
+      return (
+        <Encounter
+          onChangeHeadlineData={setHeadlineData}
+          cards={cards}
+          onChangeCards={setCards}
+          selectedCarAttribute={selectedCarAttribute}
+          onCHangePhase={setPhase}
+        />
+      );
+
     case "result":
       //Zoli call here
       break;
@@ -106,7 +98,6 @@ function App() {
 export default App;
 
 {
-  
   /* <div className="container-fluid game-board">
   <HeadLine enemyScore={enemyScore} playerScore={playerScore}></HeadLine>
 
