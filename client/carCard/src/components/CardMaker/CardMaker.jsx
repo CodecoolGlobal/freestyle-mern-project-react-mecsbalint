@@ -8,22 +8,44 @@ import { Speedometer } from "react-bootstrap-icons";
 import { Stopwatch } from "react-bootstrap-icons";
 import { FuelPump } from "react-bootstrap-icons";
 
+
 function CardMaker({
   card,
   onSetCards,
   onSetSelectedCarAttribute,
-  onSetIsPlayerTurn
+  onSetIsPlayerTurn,
+  playerSelectedCard,
+  selectedCarAttribute,
+  onSetPhase
 }) {
+  function handleAttributeClick(attribute= ''){
+    console.log("🚀 ~ handleClick ~ attribute:", attribute)
+    onSetSelectedCarAttribute(attribute);
+    onSetIsPlayerTurn(false);
+  }
+
+  function handleCardClick(){
+    if(selectedCarAttribute){
+      onSetCards((prev) => ({
+        ...prev,
+        playerSelectedCard: card
+      }))
+      onSetPhase('match');
+      return;
+    }else {
+      onSetCards((prev) => ({
+        ...prev,
+        playerSelectedCard: card
+      }))
+    }
+  }
   return (
     <Col xs="2" className="handcard">
       <Card
         data-bs-theme="dark"
         className="p-2"
         style={{ width: "15rem" }}
-        onClick={() => onSetCards((prev) => ({
-          ...prev,
-          playerSelectedCard: card
-        }))}
+        onClick={handleCardClick}
       >
         <Card.Title
           className="border border-primary rounded px-2"
@@ -43,8 +65,7 @@ function CardMaker({
               <Col
                 className="border border-primary rounded m-1 p-1"
                 onClick={() => {
-                  onSetSelectedCarAttribute("topSpeed");
-                  onSetIsPlayerTurn(false);
+                  handleAttributeClick("topSpeed");
                 }}
               >
                 <Container className="">
@@ -59,8 +80,7 @@ function CardMaker({
               <Col
                 className="border border-primary rounded m-1 p-1"
                 onClick={() => {
-                  onSetSelectedCarAttribute("acceleration");
-                  onSetIsPlayerTurn(false);
+                  handleAttributeClick("acceleration");
                 }}
               >
                 <Container>
@@ -77,8 +97,7 @@ function CardMaker({
               <Col
                 className="border border-primary rounded m-1 p-1"
                 onClick={() => {
-                  onSetSelectedCarAttribute("cylinders");
-                  onSetIsPlayerTurn(false);
+                  handleAttributeClick("cylinders");
                 }}
               >
                 <Container className="">
@@ -96,8 +115,7 @@ function CardMaker({
               <Col
                 className="border border-primary rounded m-1 p-1"
                 onClick={() => {
-                  onSetSelectedCarAttribute("consumption");
-                  onSetIsPlayerTurn(false);
+                  handleAttributeClick("consumption");
                 }}
               >
                 <Container>
@@ -114,8 +132,7 @@ function CardMaker({
               <Col
                 className="border border-primary rounded m-1 p-1"
                 onClick={() => {
-                  onSetSelectedCarAttribute("weight");
-                  onSetIsPlayerTurn(false);
+                  handleAttributeClick("weight");
                 }}
               >
                 <Container className="">
@@ -133,8 +150,7 @@ function CardMaker({
               <Col
                 className="border border-primary rounded m-1 p-1"
                 onClick={() => {
-                  onSetSelectedCarAttribute("horsepower");
-                  onSetIsPlayerTurn(false);
+                  handleAttributeClick("horsepower");
                 }}
               >
                 <Container className="">
