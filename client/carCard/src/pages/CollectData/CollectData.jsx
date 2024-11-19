@@ -81,13 +81,13 @@ function CollectData({
         car,
         lowerIsBetterProps
       );
-      onSetSelectedCarAttribute(aiSelectedAttribute);
       setTimeout(() => {
         onSetHeadlineData((prev) => ({
           ...prev,
           message: "Enemy pick attribute!",
         }));
-      }, 1000);
+        onSetSelectedCarAttribute(aiSelectedAttribute);
+      }, 3000);
       onSetCards((prev) => ({
         ...prev,
         aiSelectedCard: car,
@@ -124,7 +124,7 @@ function CollectData({
         }));
       }
     }
-  }, [cards.playerSelectedCard, cards.playerCards]);
+  }, [cards.playerSelectedCard, cards.playerCards, isPlayerTurn]);
 
   return (
     <Container fluid className="cardGeneratePage" style={{ height: "100vh" }}>

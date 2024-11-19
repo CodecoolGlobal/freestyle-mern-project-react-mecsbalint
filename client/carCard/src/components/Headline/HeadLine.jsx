@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 
 function HeadLine({headlineData, selectedCarAttribute}) {
   const [displayVersion, setDisplayVersion] = useState(null);
+
   function getAttributeDisplayVersion(){
       const letters = [selectedCarAttribute[0].toUpperCase()];
       for (let i = 1; i<selectedCarAttribute.length; i++) {
@@ -16,11 +17,12 @@ function HeadLine({headlineData, selectedCarAttribute}) {
           letters.push(` ${selectedCarAttribute[i].toLowerCase()}`);
         }
       }
-      setDisplayVersion(letters.join(''));
+      console.log("🚀 ~ getAttributeDisplayVersion ~ letters:", letters.join(''))
+       setDisplayVersion(letters.join(''));
   }
   useEffect(() => {
     selectedCarAttribute && getAttributeDisplayVersion();
-  }, [])
+  }, [selectedCarAttribute])
   return (
     <Container fluid className="text-center scoreboard col-8 text-light">
       <Row>
