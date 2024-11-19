@@ -3,7 +3,8 @@ import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import CardMaker from "../../components/CardMaker/CardMaker";
 import { useEffect, useState } from "react";
-import './collectData.css';
+import "./collectData.css";
+import Loading from "../../components/Loading/Loading";
 
 function CollectData({
   onSetCards,
@@ -13,6 +14,7 @@ function CollectData({
   onSetSelectedCarAttribute,
   onSetIsPlayerTurn,
   isPlayerTurn,
+  onSetHeadlineData,
 }) {
   const [variableForUseEffect, setVariableForUseEffect] = useState(false);
 
@@ -56,11 +58,12 @@ function CollectData({
     return comparisonBase;
   }
 
-  async function AiTurn() {
-    cards.aiSelectedCard && cards.playerSelectedCard ? onSetPhase("match") : "";
-    let car;
-    const lowerIsBetterProps = ["acceleration", "consumption", "weight"];
+  function aiSelecting(car, lowerIsBetterProps) {
     if (cards.playerSelectedCard) {
+      onSetHeadlineData((prev) => ({
+        ...prev,
+        message: "Enemy pick a card!",
+      }));
       car = getBestAttributeCardAtCategory(lowerIsBetterProps);
       console.log("🚀 ~ AiTurn ~ car:", car);
       onSetCards((prev) => ({
@@ -68,6 +71,10 @@ function CollectData({
         aiSelectedCard: car,
       }));
     } else {
+      onSetHeadlineData((prev) => ({
+        ...prev,
+        message: "Enemy pick a card!",
+      }));
       car = getAiRandomCard(cards.aiCards);
       console.log("🚀 ~ AiTurn ~ car:", car);
       const aiSelectedAttribute = findBestAttributeOfACard(
@@ -75,32 +82,69 @@ function CollectData({
         lowerIsBetterProps
       );
       onSetSelectedCarAttribute(aiSelectedAttribute);
+      setTimeout(() => {
+        onSetHeadlineData((prev) => ({
+          ...prev,
+          message: "Enemy pick attribute!",
+        }));
+      }, 1000);
       onSetCards((prev) => ({
         ...prev,
         aiSelectedCard: car,
       }));
     }
-    cards.playerSelectedCard ? onSetPhase("match") : onSetIsPlayerTurn(true);
+  }
+
+  async function AiTurn() {
+    cards.aiSelectedCard && cards.playerSelectedCard ? onSetPhase("match") : "";
+    let car;
+    const lowerIsBetterProps = ["acceleration", "consumption", "weight"];
+
+    aiSelecting(car, lowerIsBetterProps);
+    setTimeout(() => {
+      cards.playerSelectedCard ? onSetPhase("match") : onSetIsPlayerTurn(true);
+    }, 4000);
   }
 
   useEffect(() => {
     !isPlayerTurn && AiTurn();
   }, [variableForUseEffect]);
 
+  useEffect(() => {
+    if (isPlayerTurn) {
+      if (cards.playerSelectedCard) {
+        onSetHeadlineData((prev) => ({
+          ...prev,
+          message: "Pick an attribute!",
+        }));
+      } else if (cards.playerCards) {
+        onSetHeadlineData((prev) => ({
+          ...prev,
+          message: "Pick a card!",
+        }));
+      }
+    }
+  }, [cards.playerSelectedCard, cards.playerCards]);
+
   return (
     <Container fluid className="cardGeneratePage" style={{ height: "100vh" }}>
       {isPlayerTurn ? (
         <Container
-          className="d-flex flex-column justify-content-end align-items-center"
+          fluid
+          className="d-flex flex-column"
+          style={{ height: "100vh" }}
         >
-          <Row className="handdiv justify-content-center">
+          <Row className="justify-content-center handDiv">
             {cards.playerSelectedCard ? (
               <CardMaker
                 card={cards.playerSelectedCard}
                 onSetCards={onSetCards}
                 onSetSelectedCarAttribute={onSetSelectedCarAttribute}
                 onSetIsPlayerTurn={onSetIsPlayerTurn}
-              ></CardMaker>
+                playerSelectedCard={cards.playerSelectedCard}
+                selectedCarAttribute={selectedCarAttribute}
+                onSetPhase={onSetPhase}
+              />
             ) : cards.playerCards ? (
               cards.playerCards.map((card, index) => (
                 <CardMaker
@@ -108,17 +152,23 @@ function CollectData({
                   card={card}
                   onSetCards={onSetCards}
                   onSetSelectedCarAttribute={onSetSelectedCarAttribute}
+                  onSetIsPlayerTurn={onSetIsPlayerTurn}
+                  playerSelectedCard={cards.playerSelectedCard}
+                  selectedCarAttribute={selectedCarAttribute}
+                  onSetPhase={onSetPhase}
                 />
               ))
-            ) : (
-              ""
-            )}
+            ) : null}
           </Row>
         </Container>
       ) : (
-        !variableForUseEffect && setVariableForUseEffect(true)
+        <>
+          {variableForUseEffect || setVariableForUseEffect(true)}
+          <div className="whitebox mx-auto" style={{ width: "30vh" }}>
+            <Loading />
+          </div>
+        </>
       )}
-      ;
     </Container>
   );
 }

@@ -3,8 +3,24 @@ import Container from "react-bootstrap/esm/Container";
 import "./headline.css";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
+import { useEffect, useState } from "react";
 
 function HeadLine({headlineData, selectedCarAttribute}) {
+  const [displayVersion, setDisplayVersion] = useState(null);
+  function getAttributeDisplayVersion(){
+      const letters = [selectedCarAttribute[0].toUpperCase()];
+      for (let i = 1; i<selectedCarAttribute.length; i++) {
+        if(selectedCarAttribute[i] === selectedCarAttribute[i].toLowerCase()){
+          letters.push(selectedCarAttribute[i]);
+        } else {
+          letters.push(` ${selectedCarAttribute[i].toLowerCase()}`);
+        }
+      }
+      setDisplayVersion(letters.join(''));
+  }
+  useEffect(() => {
+    selectedCarAttribute && getAttributeDisplayVersion();
+  }, [])
   return (
     <Container fluid className="text-center scoreboard col-8 text-light">
       <Row>
@@ -13,7 +29,7 @@ function HeadLine({headlineData, selectedCarAttribute}) {
         <Col>{headlineData.enemyScore}</Col>
       </Row>
       <Row>
-        <Col>{selectedCarAttribute}</Col>
+        <Col className="mt-4">{displayVersion}</Col>
       </Row>
     </Container>
   );

@@ -5,7 +5,7 @@ import Drawing from "./pages/Drawing/Drawing";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CollectData from "./pages/CollectData/CollectData";
 import HeadLine from "./components/Headline/HeadLine";
-import Encounter from "./components/Encounter";
+import Encounter from "./pages/Encounter/Encounter";
 
 function App() {
   const [isPlayerTurn, setIsPlayerTurn] = useState(true);
@@ -20,8 +20,8 @@ function App() {
     aiSelectedCard: null,
   });
   const [headlineData, setHeadlineData] = useState({
-    enemyScore: null,
-    playerScore: null,
+    enemyScore: 0,
+    playerScore: 0,
     message: "Start game",
   });
 
