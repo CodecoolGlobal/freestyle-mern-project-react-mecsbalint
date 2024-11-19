@@ -93,9 +93,8 @@ function Encounter({
   }, [startScoreCalc])
 
   function calcScore() {
-    const cardsObject = { ...cards };
     setScore(
-      cardsObject,
+      cards,
       onChangeHeadlineData,
       selectedCarAttribute,
       onCHangePhase
@@ -131,6 +130,7 @@ function Encounter({
   }
 
   function nextRound() {
+    const cardsObject = { ...cards };
     updatePlayers(cardsObject, onChangeCards);
     cards.playerCards.length === 1
       ? onCHangePhase("result")
