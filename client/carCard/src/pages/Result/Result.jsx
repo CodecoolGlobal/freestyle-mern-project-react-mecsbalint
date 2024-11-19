@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 
 function Result({
     onSetIsPlayerTurn,
@@ -5,9 +6,15 @@ function Result({
     onSetSelectedCarAttribute,
     onSetCards,
     onSetHeadlineData,
-    onHeadLineData,
+    headLineData,
 }) {
 
+    useEffect(() => {
+        onSetHeadlineData((prev) => ({
+            ...prev,
+            message: "",
+        }));
+    }, []);
 
     function resetValues() {
         onSetIsPlayerTurn(true);
@@ -23,12 +30,24 @@ function Result({
         onSetHeadlineData({
             enemyScore: null,
             playerScore: null,
-            message: "Start game",
+            message: "start",
           });
     }
 
+    function handleNewGameClick() {
+        resetValues();
+        onSetPhase("start");
+    }
+
     return (
-        <p>helóka resultka</p>
+        <div className="resultDiv">
+        {headLineData.playerScore - headLineData.enemyScore > 0 ? (
+            <p>Nyertél</p>
+        ) : (
+            <p>Vesztettél LOOOSER</p>
+        )}
+        <button type="button" onClick={handleNewGameClick}>Back to the main page</button>
+        </div>
     )
 }
 
