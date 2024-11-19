@@ -20,8 +20,8 @@ function App() {
     aiSelectedCard: null,
   });
   const [headlineData, setHeadlineData] = useState({
-    enemyScore: null,
-    playerScore: null,
+    enemyScore: 0,
+    playerScore: 0,
     message: "Start game",
   });
 
