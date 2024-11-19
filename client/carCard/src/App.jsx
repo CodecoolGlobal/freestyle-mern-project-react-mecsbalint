@@ -62,7 +62,7 @@ function App() {
           onSetSelectedCarAttribute={setSelectedCarAttribute}
           onSetCards={setCards}
           onSetHeadlineData={setHeadlineData}
-          onHeadLineData={headlineData}
+          headLineData={headlineData}
       />}
     </>
   );
