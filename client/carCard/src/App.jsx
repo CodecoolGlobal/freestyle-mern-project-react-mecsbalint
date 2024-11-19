@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import CollectData from "./pages/CollectData/CollectData";
 import HeadLine from "./components/Headline/HeadLine";
 import Encounter from "./pages/Encounter/Encounter";
+import Result from "./pages/Result/Result";
 
 function App() {
   const [isPlayerTurn, setIsPlayerTurn] = useState(true);
@@ -20,8 +21,8 @@ function App() {
     aiSelectedCard: null,
   });
   const [headlineData, setHeadlineData] = useState({
-    enemyScore: 0,
-    playerScore: 0,
+    enemyScore: null,
+    playerScore: null,
     message: "Start game",
   });
 
@@ -53,7 +54,16 @@ function App() {
           onChangeCards={setCards}
           selectedCarAttribute={selectedCarAttribute}
           onCHangePhase={setPhase}
-        />}
+          onSetSelectedCarAttribute={setSelectedCarAttribute}
+      />}
+      {phase === "result" && <Result
+          onSetIsPlayerTurn={setIsPlayerTurn}
+          onSetPhase={setPhase}
+          onSetSelectedCarAttribute={setSelectedCarAttribute}
+          onSetCards={setCards}
+          onSetHeadlineData={setHeadlineData}
+          onHeadLineData={headlineData}
+      />}
     </>
   );
 }

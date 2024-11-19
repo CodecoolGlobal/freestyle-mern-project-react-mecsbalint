@@ -60,6 +60,7 @@ function Encounter({
   cards,
   onChangeCards,
   selectedCarAttribute,
+  onSetSelectedCarAttribute,
   onCHangePhase,
 }) {
   const [playerRoll, setPlayerRoll] = useState(null);
@@ -76,6 +77,11 @@ function Encounter({
   };
   
   useEffect(() => {
+    onChangeHeadlineData((prev) => ({
+      ...prev,
+      playerScore: prev.playerScore ?? 0,
+      enemyScore: prev.enemyScore ?? 0,
+    }));
     rollEffect(cards.playerSelectedCard[selectedCarAttribute], setPlayerRoll);
     rollEffect(cards.aiSelectedCard[selectedCarAttribute], setEnemyRoll);
     setTimeout(() => {
@@ -132,7 +138,9 @@ function Encounter({
   function nextRound() {
     const cardsObject = { ...cards };
     updatePlayers(cardsObject, onChangeCards);
-    cards.playerCards.length === 1
+    onSetSelectedCarAttribute(null);
+    // cards.playerCards.length === 1
+    cards.playerDeck.length === 3
       ? onCHangePhase("result")
       : onCHangePhase("collect data");
   }
