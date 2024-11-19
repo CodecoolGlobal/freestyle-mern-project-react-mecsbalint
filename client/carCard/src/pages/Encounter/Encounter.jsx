@@ -34,11 +34,11 @@ function setScore(cards, onChangeHeadlineData, selectedCarAttribute) {
     0
       ? onChangeHeadlineData((prev) => ({
           ...prev,
-          playerScore: prev.playerscore++,
+          playerScore: Number(prev.playerScore) + 1,
         }))
       : onChangeHeadlineData((prev) => ({
           ...prev,
-          enemyScore: prev.enemyScore++,
+          enemyScore: Number(prev.enemyScore) + 1,
         }));
   } else {
     cards.playerSelectedCard[selectedCarAttribute] -
@@ -46,11 +46,11 @@ function setScore(cards, onChangeHeadlineData, selectedCarAttribute) {
     0
       ? onChangeHeadlineData((prev) => ({
           ...prev,
-          enemyScore: prev.enemyScore++,
+          playerScore: Number(prev.playerScore) + 1,
         }))
-      : onChangeHeadlineData((prev) => ({
+        : onChangeHeadlineData((prev) => ({
           ...prev,
-          playerScore: prev.playerscore++,
+          enemyScore: Number(prev.enemyScore) + 1,
         }));
   }
 }
@@ -65,6 +65,7 @@ function Encounter({
   const [playerRoll, setPlayerRoll] = useState(null);
   const [enemyRoll, setEnemyRoll] = useState(null);
   const [roundIsEnded, setRoundIsEnded] = useState(false);
+  const [startScoreCalc, setStartScoreCalc] = useState(false);
   const extensionText = {
     topSpeed: " km/h",
     acceleration: " s",
@@ -73,13 +74,33 @@ function Encounter({
     consumption: " L/100km",
     weight: " kg",
   };
+  
   useEffect(() => {
     rollEffect(cards.playerSelectedCard[selectedCarAttribute], setPlayerRoll);
     rollEffect(cards.aiSelectedCard[selectedCarAttribute], setEnemyRoll);
     setTimeout(() => {
       setRoundIsEnded(true);
     }, 6000);
+    setStartScoreCalc(true);
   }, []);
+  
+  useEffect(() => {
+
+    startScoreCalc && setTimeout(() => {
+      calcScore();
+    }, 5000);
+    
+  }, [startScoreCalc])
+
+  function calcScore() {
+    const cardsObject = { ...cards };
+    setScore(
+      cardsObject,
+      onChangeHeadlineData,
+      selectedCarAttribute,
+      onCHangePhase
+    );
+  }
 
   function rollEffect(value, setter) {
     console.log("🚀 ~ rollEffect ~ value:", value);
@@ -110,13 +131,6 @@ function Encounter({
   }
 
   function nextRound() {
-    const cardsObject = { ...cards };
-    setScore(
-      cardsObject,
-      onChangeHeadlineData,
-      selectedCarAttribute,
-      onCHangePhase
-    );
     updatePlayers(cardsObject, onChangeCards);
     cards.playerCards.length === 1
       ? onCHangePhase("result")
