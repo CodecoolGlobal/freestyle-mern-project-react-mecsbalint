@@ -141,6 +141,9 @@ function CollectData({
                 onSetCards={onSetCards}
                 onSetSelectedCarAttribute={onSetSelectedCarAttribute}
                 onSetIsPlayerTurn={onSetIsPlayerTurn}
+                playerSelectedCard={cards.playerSelectedCard}
+                selectedCarAttribute={selectedCarAttribute}
+                onSetPhase={onSetPhase}
               />
             ) : cards.playerCards ? (
               cards.playerCards.map((card, index) => (
@@ -150,6 +153,9 @@ function CollectData({
                   onSetCards={onSetCards}
                   onSetSelectedCarAttribute={onSetSelectedCarAttribute}
                   onSetIsPlayerTurn={onSetIsPlayerTurn}
+                  playerSelectedCard={cards.playerSelectedCard}
+                  selectedCarAttribute={selectedCarAttribute}
+                  onSetPhase={onSetPhase}
                 />
               ))
             ) : null}
