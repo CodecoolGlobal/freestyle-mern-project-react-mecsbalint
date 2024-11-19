@@ -4,13 +4,16 @@ import "./headline.css";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 
-function HeadLine({headlineData}) {
+function HeadLine({headlineData, selectedCarAttribute}) {
   return (
-    <Container fluid className="text-center scoreboard col-6 text-light">
+    <Container fluid className="text-center scoreboard col-8 text-light">
       <Row>
-        <Col>{headlineData.playerScore}</Col>
-        <Col>{headlineData.message}</Col>
+        <Col >{headlineData.playerScore}</Col>
+        <Col xs={5} className="mb-2">{headlineData.message}</Col>
         <Col>{headlineData.enemyScore}</Col>
+      </Row>
+      <Row>
+        <Col>{selectedCarAttribute}</Col>
       </Row>
     </Container>
   );
