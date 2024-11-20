@@ -1,11 +1,46 @@
 import React from "react";
+import { useState } from "react";
+import {useNavigate} from "react-router-dom";
 import Col from "react-bootstrap/esm/Col";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import "./login.css";
 import loginImage from '../../assets/backgrounds/login.jpg';
+import UserForm from "../../components/UserForm/UserForm";
 
-function Login() {
+function Login({isLogin}) {
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const navigate = useNavigate();
+
+  async function handleLoginButton(event) {
+    setErrorMessage(null);
+    event.preventDefault();
+    const formObject = new FormData(event.target);
+    const response = await fetch(`/api/users/${formObject.get("email")}`, {headers: {"authorization": formObject.get("password")}});
+    switch (response.status) {
+      case 404:
+        setErrorMessage("There is no user with this e-mail address, please try again.");
+        break;
+        case 401:
+          setErrorMessage("Incorrect password. Please try again.");
+          break;
+        case 200:
+          { const loggedInUser = await response.json();
+            await fetch(`/api/activeuser/${loggedInUser._id}`, {method: "POST"});
+            navigate("/")
+            break; 
+          }
+    }
+  }
+
+  async function handleSignUpButton(event) {
+    setErrorMessage(null);
+    event.preventDefault();
+    const formObject = new FormData(event.target);
+    //work in progress
+  }
+
   return (
     <Container
       fluid
@@ -18,7 +53,13 @@ function Login() {
             <img src={loginImage} className="loginPic"></img>
           </Col>
           <Col xs={8} className="text-center">
-            <h3>Login</h3>
+            {
+              isLogin ? 
+            <UserForm onSubmitHandler={handleLoginButton} type={"login"}/>
+            :
+            <UserForm onSubmitHandler={handleSignUpButton} type={"signUp"}/>
+            }
+            {errorMessage && <p>{errorMessage}</p>}
           </Col>
         </Row>
       </Container>

@@ -27,6 +27,25 @@ function App() {
     playerScore: null,
     message: "Start game",
   });
+  const [currentUser, setCurrentUser] = useState(null);
+
+  async function fetchActiveUser(){
+    const response = await fetch("/api/activeuser/");
+    if (response.status === 404) {
+      return;
+    }
+    const user = await response.json();
+    setCurrentUser(user.userData);
+  }
+
+  async function handleLogOut(event) {
+    await fetch(`/api/activeuser/${currentUser._id}`, {method: "DELETE"});
+    setCurrentUser(null);
+  }
+
+  useEffect(() => {
+    fetchActiveUser();
+  }, []);
 
   return (
     <>
@@ -34,9 +53,23 @@ function App() {
         headlineData={headlineData}
         selectedCarAttribute={selectedCarAttribute}
       ></HeadLine>
-      <Link to={"/login"}>
-        <button className="btn btn-primary loginBtn">Login</button>
-      </Link>
+      <div className="userBtnsDiv">
+        {currentUser ? (
+          <div className="userNameDiv">
+            {currentUser?.name}
+            <button className="btn btn-primary" type="button" onClick={handleLogOut}>Log Out</button>
+          </div>
+        ) : (
+          <>
+        <Link to={"/login"}>
+          <button className="btn btn-primary">Login</button>
+        </Link>
+        <Link to={"/register"}>
+          <button className="btn btn-primary">Sign Up</button>
+        </Link>
+          </>
+        )}
+      </div>
       {phase === "start" && (
         <Drawing
           onSetHeadlineData={setHeadlineData}
@@ -73,7 +106,7 @@ function App() {
           onSetSelectedCarAttribute={setSelectedCarAttribute}
           onSetCards={setCards}
           onSetHeadlineData={setHeadlineData}
-          onHeadLineData={headlineData}
+          HeadLineData={headlineData}
         />
       )}
       
