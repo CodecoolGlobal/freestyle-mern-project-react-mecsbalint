@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./App.css";
 import Drawing from "./pages/Drawing/Drawing";
@@ -7,6 +8,7 @@ import CollectData from "./pages/CollectData/CollectData";
 import HeadLine from "./components/Headline/HeadLine";
 import Encounter from "./pages/Encounter/Encounter";
 import Result from "./pages/Result/Result";
+import { Button } from "bootstrap";
 
 function App() {
   const [isPlayerTurn, setIsPlayerTurn] = useState(true);
@@ -28,7 +30,13 @@ function App() {
 
   return (
     <>
-      <HeadLine headlineData={headlineData} selectedCarAttribute={selectedCarAttribute}></HeadLine>
+      <HeadLine
+        headlineData={headlineData}
+        selectedCarAttribute={selectedCarAttribute}
+      ></HeadLine>
+      <Link to={"/login"}>
+        <button className="btn btn-primary loginBtn">Login</button>
+      </Link>
       {phase === "start" && (
         <Drawing
           onSetHeadlineData={setHeadlineData}
@@ -48,25 +56,29 @@ function App() {
           isPlayerTurn={isPlayerTurn}
         ></CollectData>
       )}
-      {phase === "match" &&  <Encounter
+      {phase === "match" && (
+        <Encounter
           onChangeHeadlineData={setHeadlineData}
           cards={cards}
           onChangeCards={setCards}
           selectedCarAttribute={selectedCarAttribute}
           onCHangePhase={setPhase}
           onSetSelectedCarAttribute={setSelectedCarAttribute}
-      />}
-      {phase === "result" && <Result
+        />
+      )}
+      {phase === "result" && (
+        <Result
           onSetIsPlayerTurn={setIsPlayerTurn}
           onSetPhase={setPhase}
           onSetSelectedCarAttribute={setSelectedCarAttribute}
           onSetCards={setCards}
           onSetHeadlineData={setHeadlineData}
-          headLineData={headlineData}
-      />}
+          onHeadLineData={headlineData}
+        />
+      )}
+      
     </>
   );
 }
 
 export default App;
-

@@ -1,0 +1,19 @@
+.loginBg{
+    position: absolute;
+    top: 0%;
+    background-image: url('../../assets/backgrounds/collectData.jpg');
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+}
+
+.loginDiv{
+    background-color: rgba(255, 255, 255, 0.7);
+    height: 60vh;
+}
+
+.loginPic{
+    height: 60vh;
+    padding: 0px;
+}
+
