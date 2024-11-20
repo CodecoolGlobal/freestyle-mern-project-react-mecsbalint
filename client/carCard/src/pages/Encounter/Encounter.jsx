@@ -140,7 +140,7 @@ function Encounter({
     updatePlayers(cardsObject, onChangeCards);
     onSetSelectedCarAttribute(null);
     // cards.playerCards.length === 1
-    cards.playerDeck.length === 3
+    cards.playerDeck.length === 4
       ? onCHangePhase("result")
       : onCHangePhase("collect data");
   }
