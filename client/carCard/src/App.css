@@ -44,3 +44,9 @@
         padding: 20px;
         border-radius: 2rem;
       }
+
+      .loginBtn{
+        position: absolute;
+        right: 1%;
+        top: 1%;
+      }
