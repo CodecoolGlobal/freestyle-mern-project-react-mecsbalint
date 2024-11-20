@@ -1,9 +1,12 @@
 import express from 'express';
 import Car from './model/Car.js';
+import userRoutes from "./routes/user.js";
 
 const app = express();
 app.use(express.json());
 const port = 3005;
+
+app.use("/api/users", userRoutes);
 
 const cars = [
   { brand: "BMW", model: "M3", acceleration: "4.1", topSpeed: "250", cylinders: 6, consumption: "8.8", weight: "1585", horsepower: 425, year: 2015 },
