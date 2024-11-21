@@ -49,7 +49,7 @@ function App() {
 
   return (
     <>
-      {phase != 'start' ?
+      {phase != 'start' && phase !== "result" ?
       <HeadLine
         headlineData={headlineData}
         selectedCarAttribute={selectedCarAttribute}

@@ -49,8 +49,7 @@ router.post("/", async (req, res) => {
         const response = await User.create(newUserData);
         res.json(response);
     } catch (error) {
-        res.status(403);
-        res.json({
+        res.status(403).json({
             _id: null,
             error: error,
         });
