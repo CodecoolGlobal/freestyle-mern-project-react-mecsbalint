@@ -40,15 +40,15 @@ function CardMaker({
     }
   }
   return (
-    <Col xs="2" className="handcard">
+    <Col style={{width:'15rem'}}  className="handcard">
       <Card
         data-bs-theme="dark"
-        className="p-2"
-        style={{ width: "15rem" }}
+        className="p-2 mx-auto"
         onClick={handleCardClick}
+        style={{width: '16rem'}}
       >
         <Card.Title
-          className="border border-primary rounded px-2"
+          className="border border-primary rounded px-2 text-center "
           style={{ height: "53px" }}
         >
           {card.brand}-{card.model}({card.year})
@@ -60,7 +60,7 @@ function CardMaker({
           style={{ height: "10rem" }}
         />
         <Card.Body>
-          <Container className="">
+          <Container className="justify-content-center text-center">
             <Row>
               <Col
                 className="border border-primary rounded m-1 p-1"
@@ -73,7 +73,7 @@ function CardMaker({
                     <Speedometer color="royalblue" size={20} />
                   </Row>
                   <Row className="text-center custom-font-size m-auto">
-                    {card.topSpeed + " km/h"}
+                    <Col>{card.topSpeed + " km/h"} </Col>
                   </Row>
                 </Container>
               </Col>
@@ -88,7 +88,7 @@ function CardMaker({
                     <Stopwatch color="royalblue" size={20}></Stopwatch>
                   </Row>
                   <Row className="text-center custom-font-size m-auto">
-                    {card.acceleration + " s"}
+                    <Col>{card.acceleration + " s"} </Col>
                   </Row>
                 </Container>
               </Col>
@@ -108,7 +108,7 @@ function CardMaker({
                     ></img>
                   </Row>
                   <Row className="custom-font-size text-center m-auto middleRowHeightFixer">
-                    {card.cylinders}
+                  <Col>{card.cylinders} </Col>
                   </Row>
                 </Container>
               </Col>
@@ -123,7 +123,8 @@ function CardMaker({
                     <FuelPump color="royalblue" size={20}></FuelPump>
                   </Row>
                   <Row className="custom-font-size text-center">
-                    {card.consumption + " L/100KM"}
+                  <Col>{card.consumption + " L/100KM"}</Col>
+                    
                   </Row>
                 </Container>
               </Col>
@@ -143,7 +144,8 @@ function CardMaker({
                     ></img>
                   </Row>
                   <Row className="custom-font-size text-center m-auto">
-                    {card.weight + " kg"}
+                  <Col>{card.weight + " kg"}</Col>
+                    
                   </Row>
                 </Container>
               </Col>
@@ -161,7 +163,8 @@ function CardMaker({
                     ></img>
                   </Row>
                   <Row className="custom-font-size text-center m-auto">
-                    {card.horsepower + " hp"}
+                  <Col>{card.horsepower + " hp"}</Col>
+                    
                   </Row>
                 </Container>
               </Col>

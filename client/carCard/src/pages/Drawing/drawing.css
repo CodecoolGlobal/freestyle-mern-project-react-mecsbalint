@@ -1,12 +1,14 @@
-.drawingPage{
-    position: absolute;
-    top: 0%;
-    background-image: url('../../assets/backgrounds/start.png');
-    background-position: center;
-    background-size: cover;
-    z-index: -1;
+.startPng {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: -1;
+  background: url("../../assets/backgrounds/start.png") no-repeat center center,
+    linear-gradient(90deg, black, #3E454B);
+  background-size: contain, cover;
+  transform: scaleX(-1);
 }
 
-.Loading{
-    margin-top: 40vh;
+.Loading {
+  margin-top: 40vh;
 }

@@ -1,5 +1,6 @@
 
 .scoreboard{
+    position: relative;
     background-image: url('../../assets/scoreboard.png');
     background-position: center;
     background-repeat: no-repeat;

@@ -127,11 +127,11 @@ function CollectData({
   }, [cards.playerSelectedCard, cards.playerCards, isPlayerTurn]);
 
   return (
-    <Container fluid className="cardGeneratePage" style={{ height: "100vh" }}>
+    <Container fluid className="mainBg" style={{ height: "100vh" }}>
       {isPlayerTurn ? (
         <Container
           fluid
-          className="d-flex flex-column"
+          className="d-flex flex-column hand"
           style={{ height: "100vh" }}
         >
           <Row className="justify-content-center handDiv">

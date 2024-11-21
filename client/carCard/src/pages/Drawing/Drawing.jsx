@@ -12,17 +12,14 @@ async function fetchData() {
   return data;
 }
 
-function Drawing({
-  onSetHeadlineData,
-  onSetCards,
-  onSetPhase
-}) {
+function Drawing({ onSetHeadlineData, onSetCards, onSetPhase }) {
   const [isLoading, setIsLoading] = useState(false);
 
   async function handleClick() {
     onSetHeadlineData((prev) => ({
-      ...prev, message: 'Generating decks!'
-    }))
+      ...prev,
+      message: "Generating decks!",
+    }));
     setIsLoading(true);
     const data = await fetchData();
     onSetCards((prev) => ({
@@ -30,36 +27,43 @@ function Drawing({
       playerCards: data.playerCards,
       aiCards: data.aiCards,
       playerDeck: data.playerDeck,
-      aiDeck: data.aiDeck
-    }))
+      aiDeck: data.aiDeck,
+    }));
     setTimeout(async () => {
       onSetPhase("collect data");
     }, 3000);
   }
 
   return (
-    <Container fluid className="drawingPage" style={{ height: "100vh" }}>
-      <Container className="col-6 whitebox mx-auto">
-        {isLoading ? (
+    <Container fluid className="mainBg d-flex">
+      <Container fluid className="col-6 justify-content-center my-auto">
+      {isLoading ? (
           <Loading></Loading>
         ) : (
           <>
-            <Row className="text-center">
-              <div>
-                <h1>Car wars</h1>
-                <p>Press the start button</p>
-              </div>
-            </Row>
-            <Row>
-              <Button
-                className="btn btn-primary start-btn col-4 mx-auto"
-                onClick={handleClick}
-              >
-                Start
-              </Button>
-            </Row>
+            <Row className="text-center ">
+          <div>
+            <h1>Car wars</h1>
+            <p>Press the start button</p>
+          </div>
+        </Row>
+        <Row>
+          <Button
+            className="btn btn-primary start-btn col-4 mx-auto"
+            onClick={handleClick}
+          >
+            Start
+          </Button>
+        </Row>
           </>
         )}
+      </Container>
+      <Container className="col-6 startPng">
+          <>
+            <div>
+              <img src="../../assets/backgrounds/start.png"></img>
+            </div>
+          </>
       </Container>
     </Container>
   );

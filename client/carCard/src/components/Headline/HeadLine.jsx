@@ -26,12 +26,12 @@ function HeadLine({headlineData, selectedCarAttribute}) {
   return (
     <Container fluid className="text-center scoreboard col-8 text-light">
       <Row>
-        <Col >{headlineData.playerScore}</Col>
+        <Col className="text-dark">{headlineData.playerScore}</Col>
         <Col xs={5} className="mb-2">{headlineData.message}</Col>
-        <Col>{headlineData.enemyScore}</Col>
+        <Col className="text-dark">{headlineData.enemyScore}</Col>
       </Row>
       <Row>
-        <Col className="mt-4">{displayVersion}</Col>
+        <Col className="" style={{ position: 'absolute', bottom: '3%' }}>{displayVersion}</Col>
       </Row>
     </Container>
   );

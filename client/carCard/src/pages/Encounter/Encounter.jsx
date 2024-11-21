@@ -149,12 +149,12 @@ function Encounter({
     <>
       <Container
         fluid
-        className="background d-flex"
+        className="mainBg d-flex"
         style={{ height: "100vh" }}
       >
         <Container fluid className="col-4 matchDataDiv text-center">
           <Row>
-            <div className="carAttributeText whitebox col-4 m-auto my-2">
+            <div className="carAttributeText greybox col-4 m-auto my-2">
               {playerRoll}
               {extensionText[selectedCarAttribute]}
             </div>
@@ -169,7 +169,7 @@ function Encounter({
         </Container>
         <Container fluid className="col-4 matchDataDiv text-center">
           <Row>
-            <div className="carAttributeText whitebox col-4 m-auto my-2">
+            <div className="carAttributeText greybox col-4 m-auto my-2">
               {enemyRoll}
               {extensionText[selectedCarAttribute]}
             </div>

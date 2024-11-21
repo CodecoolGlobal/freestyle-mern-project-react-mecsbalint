@@ -49,10 +49,13 @@ function App() {
 
   return (
     <>
+      {phase != 'start' ?
       <HeadLine
         headlineData={headlineData}
         selectedCarAttribute={selectedCarAttribute}
-      ></HeadLine>
+      ></HeadLine>:''
+      
+      }
       <div className="userBtnsDiv">
         {currentUser ? (
           <div className="userNameDiv">

@@ -1,7 +1,7 @@
 .background{
     position: absolute;
     top: 0%;
-    background-image: url('../../assets/backgrounds/collectData.jpg');
+    background: linear-gradient()
     background-position: center;
     background-size: cover;
     z-index: -1;
@@ -12,8 +12,7 @@
 }
 
 .carAttributeText{
-    font-size: 2rem;
-    color: black;  
+    font-size: 2rem; 
 }
 
 .nextRoundBtn{
