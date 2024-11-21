@@ -5,7 +5,7 @@ const router = express.Router();
 router.get("/", async (req, res, next) => {
     try {
         const activeUser = await ActiveUser.find({}).populate("userData");
-        activeUser.length > 0 ? res.json(activeUser[0]) : res.status(404).send("Not Found");
+        activeUser.length > 0 ? res.json(activeUser[0]) : res.status(404).send("Not ggFound");
     } catch (error) {
         next(error);
     }

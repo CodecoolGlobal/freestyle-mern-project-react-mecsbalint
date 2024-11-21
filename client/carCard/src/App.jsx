@@ -64,7 +64,7 @@ function App() {
         <Link to={"/login"}>
           <button className="btn btn-primary">Login</button>
         </Link>
-        <Link to={"/register"}>
+        <Link to={"/registration"}>
           <button className="btn btn-primary">Sign Up</button>
         </Link>
           </>
@@ -106,7 +106,8 @@ function App() {
           onSetSelectedCarAttribute={setSelectedCarAttribute}
           onSetCards={setCards}
           onSetHeadlineData={setHeadlineData}
-          HeadLineData={headlineData}
+          headLineData={headlineData}
+          currentUser={currentUser}
         />
       )}
       

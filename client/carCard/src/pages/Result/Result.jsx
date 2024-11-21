@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
 
 function Result({
     onSetIsPlayerTurn,
@@ -7,14 +8,22 @@ function Result({
     onSetCards,
     onSetHeadlineData,
     headLineData,
+    currentUser,
 }) {
+    const [useEffectStopper, setUseEffectStopper] = useState(false);
 
     useEffect(() => {
         onSetHeadlineData((prev) => ({
             ...prev,
             message: "",
         }));
-    }, []);
+        if (useEffectStopper) {
+            const updateData = {statistics: {...currentUser.statistics}};
+            headLineData.playerScore - headLineData.enemyScore > 0 ? updateData.statistics.win++ : updateData.statistics.loose++;
+            fetch(`/api/users/${currentUser._id}`, {method: "PATCH", headers: {"Content-Type": "application/json"}, body: JSON.stringify(updateData)});
+        }
+        setUseEffectStopper(true);
+    }, [useEffectStopper]);
 
     function resetValues() {
         onSetIsPlayerTurn(true);

@@ -189,7 +189,7 @@ function Encounter({
           variant="primary"
           onClick={nextRound}
         >
-          Next round
+          {cards.playerCards.length === 1 ? <>See the results</> : <>Next round</> }
         </Button>
       ) : (
         ""

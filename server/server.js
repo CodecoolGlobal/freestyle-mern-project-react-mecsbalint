@@ -11,7 +11,7 @@ app.use("/api/users", userRoutes);
 
 app.use("/api/activeuser", activeUserRoutes);
 
-app.use("api/cards", carRoutes);
+app.use("/api/cards", carRoutes);
 
 // const cars = [
 //   { brand: "BMW", model: "M3", acceleration: "4.1", topSpeed: "250", cylinders: 6, consumption: "8.8", weight: "1585", horsepower: 425, year: 2015 },

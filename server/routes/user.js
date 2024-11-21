@@ -43,7 +43,7 @@ router.get("/all", async (req, res, next) => {
     }
 });
 
-router.post("/", async (req, res, next) => {
+router.post("/", async (req, res) => {
     try {
         const newUserData = req.body;
         const response = await User.create(newUserData);
@@ -56,5 +56,19 @@ router.post("/", async (req, res, next) => {
         });
     }
 })
+
+router.patch("/:id", async (req, res, next) => {
+    try {
+        const {id} = req.params;
+        const updateData = req.body;
+        const updatedUser = await User.findOneAndUpdate({_id: id}, updateData, {returnDocument: "after"});
+        if (!updatedUser) {
+            res.status(404).send("User Not Found");
+        }
+        res.json(updatedUser);
+    } catch (error) {
+        next(error);
+    }
+});
 
 export default router;

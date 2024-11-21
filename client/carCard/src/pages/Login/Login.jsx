@@ -38,7 +38,18 @@ function Login({isLogin}) {
     setErrorMessage(null);
     event.preventDefault();
     const formObject = new FormData(event.target);
-    //work in progress
+    const response = await fetch("/api/users/", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({name: formObject.get("name"), email: formObject.get("email"), password: formObject.get("password")}),
+    });
+    if (response.status === 403) {
+      setErrorMessage("Invalid registration data, please try again.");
+      return;
+    }
+    const newUser = await response.json();
+    await fetch(`/api/activeuser/${newUser._id}`, {method: "POST"});
+    navigate("/");
   }
 
   return (

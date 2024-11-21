@@ -18,7 +18,7 @@ async function findAllCards() {
   return data;
 }
 
-router.get("/api/cards", async (req, res) => {
+router.get("/", async (req, res) => {
   const allCards = await findAllCards();
   const drawnCardsIndexes = drawCardIndexes(20);
   const yourHand = [];
