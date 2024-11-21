@@ -17,12 +17,16 @@ router.use((req, res, next) => {
     }
 });
 
-router.get(`/`, async (req, res, next) => {
+router.get(`/:email`, async (req, res, next) => {
     try {
-        const {email, password} = req.body;
-        const user = await User.findOne({email: email, password: password});
+        const {email} = req.params;
+        const password = req.headers.authorization;
+        const user = await User.findOne({email: email});
         if (!user) {
-            return res.status(404).json({error: "Not Found"});
+            return res.status(404).json({error: "User Not Found"});
+        }
+        if (user.password !== password) {
+            return res.status(401).json({error: "Password Incorrect"});
         }
         res.json(user);
     } catch (error) {
@@ -39,18 +43,32 @@ router.get("/all", async (req, res, next) => {
     }
 });
 
-router.post("/", async (req, res, next) => {
+router.post("/", async (req, res) => {
     try {
         const newUserData = req.body;
-        const response = await User.create(newUserDat);
+        const response = await User.create(newUserData);
         res.json(response);
     } catch (error) {
-        res.status(404);
+        res.status(403);
         res.json({
             _id: null,
             error: error,
         });
     }
 })
+
+router.patch("/:id", async (req, res, next) => {
+    try {
+        const {id} = req.params;
+        const updateData = req.body;
+        const updatedUser = await User.findOneAndUpdate({_id: id}, updateData, {returnDocument: "after"});
+        if (!updatedUser) {
+            res.status(404).send("User Not Found");
+        }
+        res.json(updatedUser);
+    } catch (error) {
+        next(error);
+    }
+});
 
 export default router;

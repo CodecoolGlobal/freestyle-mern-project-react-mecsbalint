@@ -7,7 +7,7 @@ import { useState } from "react";
 import Loading from "../../components/Loading/Loading";
 
 async function fetchData() {
-  const response = await fetch("/api/cards");
+  const response = await fetch("/api/cards/");
   const data = await response.json();
   return data;
 }
