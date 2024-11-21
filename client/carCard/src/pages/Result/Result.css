@@ -1,6 +1,5 @@
 .resultPageDiv {
     position: relative;
-    z-index: -1;
 }
 
 .resultDiv {
@@ -31,6 +30,7 @@
     height: 100vh;
     width: 60vw;
     padding-left: 10vw;
+    z-index: -1;
 }
 
 .resultCarImg {
