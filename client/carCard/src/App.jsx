@@ -49,10 +49,12 @@ function App() {
 
   return (
     <>
-      <HeadLine
-        headlineData={headlineData}
-        selectedCarAttribute={selectedCarAttribute}
-      ></HeadLine>
+      {phase !== "result" && (
+        <HeadLine
+          headlineData={headlineData}
+          selectedCarAttribute={selectedCarAttribute}
+        ></HeadLine>
+      )}
       <div className="userBtnsDiv">
         {currentUser ? (
           <div className="userNameDiv">

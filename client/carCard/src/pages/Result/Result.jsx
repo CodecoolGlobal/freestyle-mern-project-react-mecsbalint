@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
+import "./Result.css";
 
 function Result({
     onSetIsPlayerTurn,
@@ -13,6 +14,7 @@ function Result({
     const [useEffectStopper, setUseEffectStopper] = useState(false);
 
     useEffect(() => {
+        onSetSelectedCarAttribute(" ");
         onSetHeadlineData((prev) => ({
             ...prev,
             message: "",
@@ -49,13 +51,20 @@ function Result({
     }
 
     return (
+        <div className="resultPageDiv">
         <div className="resultDiv">
-        {headLineData.playerScore - headLineData.enemyScore > 0 ? (
-            <p>Nyertél</p>
-        ) : (
-            <p>Vesztettél LOOOSER</p>
-        )}
-        <button type="button" onClick={handleNewGameClick}>Back to the main page</button>
+            <div className="resultContentBox">
+                {headLineData.playerScore - headLineData.enemyScore > 0 ? (
+                    <p>You Win!</p>
+                ) : (
+                    <p>You Lost!</p>
+                )}
+                <button type="button" className="btn btn-primary" onClick={handleNewGameClick}>Back to the main page</button>
+            </div>
+        </div>
+        <div className="resultCarDiv">
+            <img className="resultCarImg" src="https://pngimg.com/uploads/mercedes/mercedes_PNG1903.png"></img>
+        </div>
         </div>
     )
 }
