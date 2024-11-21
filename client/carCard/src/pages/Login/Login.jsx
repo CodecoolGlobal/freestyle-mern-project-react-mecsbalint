@@ -55,7 +55,7 @@ function Login({isLogin}) {
   return (
     <Container
       fluid
-      className="d-flex m-auto loginBg"
+      className="d-flex m-auto mainBg"
       style={{ height: "100vh" }}
     >
       <Container className=" col-6 loginDiv my-auto">
@@ -63,7 +63,7 @@ function Login({isLogin}) {
           <Col xs={4} className="p-0 loginPicDiv">
             <img src={loginImage} className="loginPic"></img>
           </Col>
-          <Col xs={8} className="text-center">
+          <Col xs={6} className="text-center m-auto">
             {
               isLogin ? 
             <UserForm onSubmitHandler={handleLoginButton} type={"login"}/>

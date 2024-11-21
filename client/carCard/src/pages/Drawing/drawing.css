@@ -3,8 +3,8 @@
   background-size: contain;
   background-repeat: no-repeat;
   z-index: -1;
-  background: url("../../assets/backgrounds/start.png") no-repeat center center,
-    linear-gradient(90deg, black, #3E454B);
+  background: url("../../assets/backgrounds/start.png") no-repeat center center;
+    /* linear-gradient(45deg, #3E454B, #3E454B); */
   background-size: contain, cover;
   transform: scaleX(-1);
 }

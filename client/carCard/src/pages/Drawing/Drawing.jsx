@@ -59,11 +59,6 @@ function Drawing({ onSetHeadlineData, onSetCards, onSetPhase }) {
         )}
       </Container>
       <Container className="col-6 startPng">
-          <>
-            <div>
-              <img src="../../assets/backgrounds/start.png"></img>
-            </div>
-          </>
       </Container>
     </Container>
   );
