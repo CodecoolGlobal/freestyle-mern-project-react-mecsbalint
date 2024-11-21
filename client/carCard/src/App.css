@@ -56,9 +56,9 @@
       }
 
       .userNameDiv {
-        background-color: white;
-        padding-left: 5px;
         border-radius: 10px;
+        text-align: center;
+        
       }
 
       .mainBg{

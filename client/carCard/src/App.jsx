@@ -58,17 +58,19 @@ function App() {
       }
       <div className="userBtnsDiv">
         {currentUser ? (
-          <div className="userNameDiv">
-            {currentUser?.name}
+          <div className="d-flex">
+            <div className="userNameDiv justify-content-center my-auto">
+              <p className="my-auto me-4">{currentUser?.name} </p>
+              </div> 
             <button className="btn btn-primary" type="button" onClick={handleLogOut}>Log Out</button>
           </div>
         ) : (
           <>
         <Link to={"/login"}>
-          <button className="btn btn-primary">Login</button>
+          <button className="btn btn-primary m-3">Login</button>
         </Link>
         <Link to={"/registration"}>
-          <button className="btn btn-primary">Sign Up</button>
+          <button className="btn btn-primary m-3">Sign Up</button>
         </Link>
           </>
         )}

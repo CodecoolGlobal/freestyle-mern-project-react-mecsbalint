@@ -164,7 +164,7 @@ function CollectData({
       ) : (
         <>
           {variableForUseEffect || setVariableForUseEffect(true)}
-          <div className="whitebox mx-auto" style={{ width: "30vh" }}>
+          <div className="m-auto loadingDiv" style={{ width: "30vh", height: "100vh"}}>
             <Loading />
           </div>
         </>

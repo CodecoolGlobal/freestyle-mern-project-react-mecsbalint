@@ -12,15 +12,19 @@
 }
 
 .carAttributeText{
-    font-size: 2rem; 
+    font-size: 2rem;
+    font-weight: 800;
 }
 
 .nextRoundBtn{
 position: absolute;
-top: 50%;
-left: 47%;
+top: 25%;
+left: 46%;
+border-radius: 50%;
+height: 15vh;
 }
 
 .matchDataDiv{
-    margin-top: 30vh;
+    margin-top: 20vh;
+    height: 50vh;
 }

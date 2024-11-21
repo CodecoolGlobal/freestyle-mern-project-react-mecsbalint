@@ -4,6 +4,7 @@ import Button from "react-bootstrap/esm/Button";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import "./encounter.css";
+import Col from "react-bootstrap/esm/Col";
 
 function updatePlayer(cardsObject, side) {
   cardsObject[side.concat("Cards")].splice(
@@ -152,7 +153,7 @@ function Encounter({
         className="mainBg d-flex"
         style={{ height: "100vh" }}
       >
-        <Container fluid className="col-4 matchDataDiv text-center">
+        <Container fluid className="col-5 matchDataDiv text-center">
           <Row>
             <div className="carAttributeText greybox col-4 m-auto my-2">
               {playerRoll}
@@ -161,13 +162,16 @@ function Encounter({
           </Row>
           <Row>
             <img
-              style={{ height: "40vh" }}
+              style={{ height: "50vh" }}
               src={cards.playerSelectedCard.img_url}
               className="matchPic"
             ></img>
           </Row>
+          <Row>
+            <p className="text-center carAttributeText text-dark">{cards.playerSelectedCard.brand}-{cards.playerSelectedCard.model}({cards.playerSelectedCard.year})</p>
+          </Row>
         </Container>
-        <Container fluid className="col-4 matchDataDiv text-center">
+        <Container fluid className="col-5 matchDataDiv text-center">
           <Row>
             <div className="carAttributeText greybox col-4 m-auto my-2">
               {enemyRoll}
@@ -176,10 +180,13 @@ function Encounter({
           </Row>
           <Row>
             <img
-              style={{ height: "40vh" }}
+              style={{ height: "50vh" }}
               src={cards.aiSelectedCard.img_url}
               className="matchPic"
             ></img>
+          </Row>
+          <Row>
+            <p className="text-center carAttributeText text-dark">{cards.aiSelectedCard.brand}-{cards.aiSelectedCard.model}({cards.aiSelectedCard.year})</p>
           </Row>
         </Container>
       </Container>
