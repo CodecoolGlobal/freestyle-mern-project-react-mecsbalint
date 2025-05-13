@@ -3,7 +3,7 @@
   "scripts": {
     "populate": "node populate/populate.js",
     "start": "node server.js",
-    "dev": "node populate/populate.js || node server.js"
+    "dev": "node populate/populate.js && node server.js"
   },
   "dependencies": {
     "dotenv": "^16.5.0",
