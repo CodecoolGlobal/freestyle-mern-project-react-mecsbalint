@@ -5,18 +5,25 @@ import CardMaker from "../../components/CardMaker/CardMaker";
 import { useEffect, useState } from "react";
 import "./collectData.css";
 import Loading from "../../components/Loading/Loading";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
-function CollectData({
-  onSetCards,
-  onSetPhase,
-  cards,
-  selectedCarAttribute,
-  onSetSelectedCarAttribute,
-  onSetIsPlayerTurn,
-  isPlayerTurn,
-  onSetHeadlineData,
-}) {
+function CollectData() {
   const [variableForUseEffect, setVariableForUseEffect] = useState(false);
+  const navigate = useNavigate();
+  const {
+    setIsHeadlineShown,
+    onSetCards,
+    cards,
+    selectedCarAttribute,
+    onSetSelectedCarAttribute,
+    onSetIsPlayerTurn,
+    isPlayerTurn,
+    onSetHeadlineData,
+  } = useOutletContext();
+
+  useEffect(() => {
+    setIsHeadlineShown(true)
+  }, [setIsHeadlineShown]);
 
   function getAiRandomCard() {
     const randomIndex = Math.floor(Math.random() * cards.aiCards.length);
@@ -96,13 +103,13 @@ function CollectData({
   }
 
   async function AiTurn() {
-    cards.aiSelectedCard && cards.playerSelectedCard ? onSetPhase("match") : "";
+    cards.aiSelectedCard && cards.playerSelectedCard ? navigate("/encounter") : "";
     let car;
     const lowerIsBetterProps = ["acceleration", "consumption", "weight"];
 
     aiSelecting(car, lowerIsBetterProps);
     setTimeout(() => {
-      cards.playerSelectedCard ? onSetPhase("match") : onSetIsPlayerTurn(true);
+      cards.playerSelectedCard ? navigate("/encounter") : onSetIsPlayerTurn(true);
     }, 4000);
   }
 
@@ -143,7 +150,6 @@ function CollectData({
                 onSetIsPlayerTurn={onSetIsPlayerTurn}
                 playerSelectedCard={cards.playerSelectedCard}
                 selectedCarAttribute={selectedCarAttribute}
-                onSetPhase={onSetPhase}
               />
             ) : cards.playerCards ? (
               cards.playerCards.map((card, index) => (
@@ -155,7 +161,6 @@ function CollectData({
                   onSetIsPlayerTurn={onSetIsPlayerTurn}
                   playerSelectedCard={cards.playerSelectedCard}
                   selectedCarAttribute={selectedCarAttribute}
-                  onSetPhase={onSetPhase}
                 />
               ))
             ) : null}

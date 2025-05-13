@@ -3,8 +3,9 @@ import Button from "react-bootstrap/Button";
 import "./drawing.css";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Loading from "../../components/Loading/Loading";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 async function fetchData() {
   const response = await fetch("/api/cards/");
@@ -12,8 +13,14 @@ async function fetchData() {
   return data;
 }
 
-function Drawing({ onSetHeadlineData, onSetCards, onSetPhase }) {
+function Drawing() {
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  const {setIsHeadlineShown, onSetHeadlineData, onSetCards, currentUser} = useOutletContext();
+
+  useEffect(() => {
+    setIsHeadlineShown(false)
+  }, [setIsHeadlineShown]);
 
   async function handleClick() {
     onSetHeadlineData((prev) => ({
@@ -30,7 +37,7 @@ function Drawing({ onSetHeadlineData, onSetCards, onSetPhase }) {
       aiDeck: data.aiDeck,
     }));
     setTimeout(async () => {
-      onSetPhase("collect data");
+      navigate("/collect-data");
     }, 3000);
   }
 
@@ -44,12 +51,12 @@ function Drawing({ onSetHeadlineData, onSetCards, onSetPhase }) {
             <Row className="text-center ">
           <div>
             <h1>Car wars</h1>
-            <p>Press the start button</p>
+            <p className={`${currentUser ? "" : "d-none"}`}>Press the start button</p>
           </div>
         </Row>
         <Row>
           <Button
-            className="btn btn-primary start-btn col-4 mx-auto"
+            className={`btn btn-primary start-btn col-4 mx-auto ${currentUser ? "" : "d-none"}`}
             onClick={handleClick}
           >
             Start

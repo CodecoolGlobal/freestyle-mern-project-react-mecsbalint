@@ -4,7 +4,7 @@ import Button from "react-bootstrap/esm/Button";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import "./encounter.css";
-import Col from "react-bootstrap/esm/Col";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 function updatePlayer(cardsObject, side) {
   cardsObject[side.concat("Cards")].splice(
@@ -56,14 +56,7 @@ function setScore(cards, onChangeHeadlineData, selectedCarAttribute) {
   }
 }
 
-function Encounter({
-  onChangeHeadlineData,
-  cards,
-  onChangeCards,
-  selectedCarAttribute,
-  onSetSelectedCarAttribute,
-  onCHangePhase,
-}) {
+function Encounter() {
   const [playerRoll, setPlayerRoll] = useState(null);
   const [enemyRoll, setEnemyRoll] = useState(null);
   const [roundIsEnded, setRoundIsEnded] = useState(false);
@@ -76,7 +69,20 @@ function Encounter({
     consumption: " L/100km",
     weight: " kg",
   };
-  
+  const {
+    setIsHeadlineShown,
+    onChangeHeadlineData,
+    cards,
+    onChangeCards,
+    selectedCarAttribute,
+    onSetSelectedCarAttribute,
+  } = useOutletContext();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setIsHeadlineShown(true)
+  }, [setIsHeadlineShown]);
+
   useEffect(() => {
     onChangeHeadlineData((prev) => ({
       ...prev,
@@ -103,8 +109,7 @@ function Encounter({
     setScore(
       cards,
       onChangeHeadlineData,
-      selectedCarAttribute,
-      onCHangePhase
+      selectedCarAttribute
     );
   }
 
@@ -142,8 +147,8 @@ function Encounter({
     onSetSelectedCarAttribute(null);
     // cards.playerCards.length === 1
     cards.playerDeck.length === 4
-      ? onCHangePhase("result")
-      : onCHangePhase("collect data");
+      ? navigate("/result")
+      : navigate("/collect-data");
   }
 
   return (

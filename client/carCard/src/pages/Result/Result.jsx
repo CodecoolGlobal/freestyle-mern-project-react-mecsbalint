@@ -1,17 +1,24 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import "./Result.css";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
-function Result({
-    onSetIsPlayerTurn,
-    onSetPhase,
-    onSetSelectedCarAttribute,
-    onSetCards,
-    onSetHeadlineData,
-    headLineData,
-    currentUser,
-}) {
+function Result() {
     const [useEffectStopper, setUseEffectStopper] = useState(false);
+    const {
+        setIsHeadlineShown,
+        onSetIsPlayerTurn,
+        onSetSelectedCarAttribute,
+        onSetCards,
+        onSetHeadlineData,
+        headlineData,
+        currentUser,
+    } = useOutletContext();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        setIsHeadlineShown(false)
+    }, [setIsHeadlineShown]);
 
     useEffect(() => {
         onSetSelectedCarAttribute(" ");
@@ -21,7 +28,7 @@ function Result({
         }));
         if (useEffectStopper) {
             const updateData = {statistics: {...currentUser.statistics}};
-            headLineData.playerScore - headLineData.enemyScore > 0 ? updateData.statistics.win++ : updateData.statistics.loose++;
+            headlineData.playerScore - headlineData.enemyScore > 0 ? updateData.statistics.win++ : updateData.statistics.loose++;
             fetch(`/api/users/${currentUser._id}`, {method: "PATCH", headers: {"Content-Type": "application/json"}, body: JSON.stringify(updateData)});
         }
         setUseEffectStopper(true);
@@ -47,14 +54,14 @@ function Result({
 
     function handleNewGameClick() {
         resetValues();
-        onSetPhase("start");
+        navigate("/");
     }
 
     return (
         <div className="resultPageDiv">
         <div className="resultDiv">
             <div className="resultContentBox">
-                {headLineData.playerScore - headLineData.enemyScore > 0 ? (
+                {headlineData.playerScore - headlineData.enemyScore > 0 ? (
                     <p>You Win!</p>
                 ) : (
                     <p>You Lost!</p>

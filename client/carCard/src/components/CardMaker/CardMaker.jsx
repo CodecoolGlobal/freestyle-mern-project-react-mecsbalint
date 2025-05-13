@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import { Speedometer } from "react-bootstrap-icons";
 import { Stopwatch } from "react-bootstrap-icons";
 import { FuelPump } from "react-bootstrap-icons";
+import { useNavigate } from "react-router-dom";
 
 
 function CardMaker({
@@ -14,10 +15,10 @@ function CardMaker({
   onSetCards,
   onSetSelectedCarAttribute,
   onSetIsPlayerTurn,
-  playerSelectedCard,
   selectedCarAttribute,
-  onSetPhase
 }) {
+  const navigate = useNavigate();
+
   function handleAttributeClick(attribute= ''){
     console.log("🚀 ~ handleClick ~ attribute:", attribute)
     onSetSelectedCarAttribute(attribute);
@@ -30,7 +31,7 @@ function CardMaker({
         ...prev,
         playerSelectedCard: card
       }))
-      onSetPhase('match');
+      navigate('/encounter');
       return;
     }else {
       onSetCards((prev) => ({
