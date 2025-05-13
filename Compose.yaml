@@ -1,0 +1,34 @@
+services:
+
+  db:
+    image: mongodb/mongodb-community-server:6.0-ubi8
+    environment:
+      - MONGODB_INITDB_ROOT_USERNAME=user
+      - MONGODB_INITDB_ROOT_PASSWORD=pass
+    volumes:
+      - type: bind
+        source: ./data
+        target: /data/db
+    healthcheck:
+      test: echo 'db.adminCommand("ping")' | mongosh --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: 
+      context: ./server
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - MONGO_URL=mongodb://user:pass@db:27017/?authSource=admin
+    command: sh -c "npm run populate; npm run dev"
+
+  frontend:
+    build:
+      context: ./client/carCard/
+    depends_on:
+      - backend
+    ports:
+      - 5173:3005
