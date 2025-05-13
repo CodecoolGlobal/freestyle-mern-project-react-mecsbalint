@@ -1,0 +1,480 @@
+[{
+    "_id": {
+      "$oid": "6729f0072b57d1ea86bdb31e"
+    },
+    "brand": "BMW",
+    "model": "M3",
+    "acceleration": 4.1,
+    "topSpeed": 250,
+    "cylinders": 6,
+    "consumption": 8.8,
+    "weight": 1585,
+    "horsepower": 425,
+    "year": 2015,
+    "img_url": "https://media.carsandbids.com/cdn-cgi/image/width=2080,quality=70/d9b636c2ec84ddc3bc7f2eb32861b39bdd5f9683/photos/35Xel1oP-cc0THCW_tT-(edit).jpg?t=169024469981",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0072b57d1ea86bdb321"
+    },
+    "brand": "Audi",
+    "model": "A4 2.0 TFSI",
+    "acceleration": 6.1,
+    "topSpeed": 240,
+    "cylinders": 4,
+    "consumption": 7.1,
+    "weight": 1470,
+    "horsepower": 252,
+    "year": 2017,
+    "img_url": "https://assets.adac.de/image/upload/v1/Autodatenbank/Fahrzeugbilder/im03382-1-audi-a4.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0072b57d1ea86bdb323"
+    },
+    "brand": "Mercedes-Benz",
+    "model": "C63 AMG",
+    "acceleration": 4,
+    "topSpeed": 290,
+    "cylinders": 8,
+    "consumption": 10.3,
+    "weight": 1730,
+    "horsepower": 503,
+    "year": 2018,
+    "img_url": "https://www.exoticshunter.com/imagetag/390/main/l/Used-2018-Mercedes-Benz-C-Class-AMG-C-63-S-w-FACTORY-Designo-Matte-Paint-ALL-Exterior-Carbon-1682372900.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0072b57d1ea86bdb325"
+    },
+    "brand": "Ford",
+    "model": "Mustang GT",
+    "acceleration": 4.3,
+    "topSpeed": 250,
+    "cylinders": 8,
+    "consumption": 12,
+    "weight": 1680,
+    "horsepower": 450,
+    "year": 2020,
+    "img_url": "https://www.jonathanmotorcars.com/imagetag/1566/2/l/Used-2020-Ford-Mustang-GT-Premium-1678157796.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0072b57d1ea86bdb327"
+    },
+    "brand": "Toyota",
+    "model": "Supra",
+    "acceleration": 4.1,
+    "topSpeed": 250,
+    "cylinders": 6,
+    "consumption": 7.7,
+    "weight": 1495,
+    "horsepower": 335,
+    "year": 2021,
+    "img_url": "https://www.motortrend.com/uploads/sites/5/2020/02/2021-Toyota-GR-Supra-A91-Edition-13.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0072b57d1ea86bdb329"
+    },
+    "brand": "Chevrolet",
+    "model": "Camaro SS",
+    "acceleration": 4,
+    "topSpeed": 270,
+    "cylinders": 8,
+    "consumption": 12.6,
+    "weight": 1690,
+    "horsepower": 455,
+    "year": 2019,
+    "img_url": "https://www.motortrend.com/uploads/sites/5/2019/03/2019-Chevrolet-Camaro-SS-front-three-quarter-1.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0072b57d1ea86bdb32b"
+    },
+    "brand": "Nissan",
+    "model": "GT-R",
+    "acceleration": 2.9,
+    "topSpeed": 315,
+    "cylinders": 6,
+    "consumption": 11.8,
+    "weight": 1765,
+    "horsepower": 565,
+    "year": 2020,
+    "img_url": "https://hips.hearstapps.com/hmg-prod/images/2020-nissan-gt-r-nismo-101-1563221484.jpg?crop=0.718xw:0.609xh;0.282xw,0.293xh&resize=2048:*",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0072b57d1ea86bdb32d"
+    },
+    "brand": "Porsche",
+    "model": "911 Carrera",
+    "acceleration": 4.2,
+    "topSpeed": 293,
+    "cylinders": 6,
+    "consumption": 9.2,
+    "weight": 1565,
+    "horsepower": 385,
+    "year": 2019,
+    "img_url": "https://media.carsandbids.com/cdn-cgi/image/width=2080,quality=70/171ab1e538119e13fa98382f268326fc825fdc20/photos/r40xJxNx-RMEAeUfHk1-(edit).jpg?t=164783105464",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0072b57d1ea86bdb32f"
+    },
+    "brand": "Volkswagen",
+    "model": "Golf R",
+    "acceleration": 4.6,
+    "topSpeed": 250,
+    "cylinders": 4,
+    "consumption": 7.3,
+    "weight": 1475,
+    "horsepower": 315,
+    "year": 2022,
+    "img_url": "https://hips.hearstapps.com/hmg-prod/images/2022-volkswagen-golf-r-101-1604436083.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0072b57d1ea86bdb331"
+    },
+    "brand": "Dodge",
+    "model": "Challenger SRT Hellcat",
+    "acceleration": 3.6,
+    "topSpeed": 320,
+    "cylinders": 8,
+    "consumption": 13.5,
+    "weight": 2018,
+    "horsepower": 717,
+    "year": 2018,
+    "img_url": "https://i.gaw.to/content/photos/30/06/300651_2018_Dodge_Challenger.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0082b57d1ea86bdb333"
+    },
+    "brand": "Tesla",
+    "model": "Model S Plaid",
+    "acceleration": 1.99,
+    "topSpeed": 322,
+    "cylinders": 0,
+    "consumption": 0,
+    "weight": 2162,
+    "horsepower": 1020,
+    "year": 2021,
+    "img_url": "https://cdn.motor1.com/images/mgl/oRgrE/s1/2021-tesla-model-s-plaid.webp",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0082b57d1ea86bdb335"
+    },
+    "brand": "BMW",
+    "model": "i8",
+    "acceleration": 4.4,
+    "topSpeed": 250,
+    "cylinders": 3,
+    "consumption": 2.1,
+    "weight": 1485,
+    "horsepower": 369,
+    "year": 2019,
+    "img_url": "https://assets.adac.de/image/upload/v1/Autodatenbank/Fahrzeugbilder/im05391-1-bmw-i8.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0082b57d1ea86bdb337"
+    },
+    "brand": "Audi",
+    "model": "RS7",
+    "acceleration": 3.6,
+    "topSpeed": 305,
+    "cylinders": 8,
+    "consumption": 11.4,
+    "weight": 1995,
+    "horsepower": 591,
+    "year": 2021,
+    "img_url": "https://hips.hearstapps.com/hmg-prod/images/2024-audi-rs7-performance-motion-front-2-1669663936.jpg?crop=0.729xw:0.615xh;0.255xw,0.300xh&resize=2048:*",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0082b57d1ea86bdb339"
+    },
+    "brand": "Mercedes-Benz",
+    "model": "E63 AMG",
+    "acceleration": 3.4,
+    "topSpeed": 300,
+    "cylinders": 8,
+    "consumption": 11.9,
+    "weight": 1945,
+    "horsepower": 603,
+    "year": 2020,
+    "img_url": "https://media.drive.com.au/obj/tx_q:50,rs:auto:1920:1080:1/driveau/upload/cms/uploads/k3dd7jm4pkhmvcxt0kpq",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0082b57d1ea86bdb33b"
+    },
+    "brand": "Jaguar",
+    "model": "F-Type R",
+    "acceleration": 3.5,
+    "topSpeed": 299,
+    "cylinders": 8,
+    "consumption": 11.3,
+    "weight": 1745,
+    "horsepower": 575,
+    "year": 2017,
+    "img_url": "https://media.carsandbids.com/cdn-cgi/image/width=2080,quality=70/d9b636c2ec84ddc3bc7f2eb32861b39bdd5f9683/photos/KYzOOgQE-lmqeKNIDel-(edit).jpg?t=168463055753",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0082b57d1ea86bdb33d"
+    },
+    "brand": "Aston Martin",
+    "model": "DB11",
+    "acceleration": 3.7,
+    "topSpeed": 322,
+    "cylinders": 12,
+    "consumption": 12.4,
+    "weight": 1870,
+    "horsepower": 630,
+    "year": 2021,
+    "img_url": "https://www.topgear.com/sites/default/files/images/cars-road-test/2016/08/1cfd26739596aebc49c050855ee79013/db11-lightning-silver-153.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0082b57d1ea86bdb33f"
+    },
+    "brand": "Ferrari",
+    "model": "488 GTB",
+    "acceleration": 3,
+    "topSpeed": 330,
+    "cylinders": 8,
+    "consumption": 11.4,
+    "weight": 1475,
+    "horsepower": 661,
+    "year": 2016,
+    "img_url": "https://www.topgear.com/sites/default/files/cars-car/image/2015/12/li3020379_u6a0684488_1.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0082b57d1ea86bdb341"
+    },
+    "brand": "Lamborghini",
+    "model": "Huracan Evo",
+    "acceleration": 2.9,
+    "topSpeed": 325,
+    "cylinders": 10,
+    "consumption": 13.7,
+    "weight": 1422,
+    "horsepower": 631,
+    "year": 2022,
+    "img_url": "https://www.ilussopalmbeach.com/imagetag/2366/main/l/Used-2022-Lamborghini-Huracan-EVO-Spyder-1695940950.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0082b57d1ea86bdb343"
+    },
+    "brand": "McLaren",
+    "model": "720S",
+    "acceleration": 2.8,
+    "topSpeed": 341,
+    "cylinders": 8,
+    "consumption": 12.2,
+    "weight": 1419,
+    "horsepower": 710,
+    "year": 2019,
+    "img_url": "https://player.hu/uploads/2017/03/mclaren-720s-01.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0082b57d1ea86bdb345"
+    },
+    "brand": "Alfa Romeo",
+    "model": "Giulia Quadrifoglio",
+    "acceleration": 3.8,
+    "topSpeed": 307,
+    "cylinders": 6,
+    "consumption": 8.5,
+    "weight": 1585,
+    "horsepower": 505,
+    "year": 2020,
+    "img_url": "https://hagerty-media-prod.imgix.net/2022/08/2022-Alfa-Romeo-Giulia-Quadrifoglio-04-scaled.jpg?auto=format%2Ccompress&ixlib=php-3.3.0",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0082b57d1ea86bdb347"
+    },
+    "brand": "Honda",
+    "model": "Civic Type R",
+    "acceleration": 5.7,
+    "topSpeed": 272,
+    "cylinders": 4,
+    "consumption": 8.4,
+    "weight": 1380,
+    "horsepower": 316,
+    "year": 2018,
+    "img_url": "https://www.motortrend.com/uploads/sites/5/2019/10/2018-Honda-Civic-Type-R.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0082b57d1ea86bdb349"
+    },
+    "brand": "Ford",
+    "model": "Focus RS",
+    "acceleration": 4.7,
+    "topSpeed": 266,
+    "cylinders": 4,
+    "consumption": 10.3,
+    "weight": 1519,
+    "horsepower": 350,
+    "year": 2016,
+    "img_url": "https://images2.alphacoders.com/255/thumb-1920-255490.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0082b57d1ea86bdb34b"
+    },
+    "brand": "Mazda",
+    "model": "MX-5 Miata",
+    "acceleration": 6.5,
+    "topSpeed": 214,
+    "cylinders": 4,
+    "consumption": 7,
+    "weight": 1135,
+    "horsepower": 181,
+    "year": 2021,
+    "img_url": "https://di-uploads-pod40.dealerinspire.com/kennyrossmazda/uploads/2023/11/Kenny-Ross-Mazda-MX5.jpeg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0082b57d1ea86bdb34d"
+    },
+    "brand": "Subaru",
+    "model": "WRX STI",
+    "acceleration": 4.9,
+    "topSpeed": 255,
+    "cylinders": 4,
+    "consumption": 10.6,
+    "weight": 1537,
+    "horsepower": 310,
+    "year": 2015,
+    "img_url": "https://www.topgear.com/sites/default/files/cars-car/image/2015/02/buyers_guide_-_subaru_wrx_sti_2014_-_front_quarter_0.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0082b57d1ea86bdb34f"
+    },
+    "brand": "Volvo",
+    "model": "S60 Polestar",
+    "acceleration": 4.7,
+    "topSpeed": 250,
+    "cylinders": 4,
+    "consumption": 7.8,
+    "weight": 1754,
+    "horsepower": 367,
+    "year": 2020,
+    "img_url": "https://media.drive.com.au/obj/tx_q:70,rs:auto:1280:720:1/driveau/private/ca-s3/2013/06/Volvo-S60-Polestar-026-e1371622474374-625x360",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0082b57d1ea86bdb351"
+    },
+    "brand": "Lexus",
+    "model": "RC F",
+    "acceleration": 4.4,
+    "topSpeed": 270,
+    "cylinders": 8,
+    "consumption": 11.2,
+    "weight": 1800,
+    "horsepower": 472,
+    "year": 2022,
+    "img_url": "https://www.autonavigator.hu/wp-content/uploads/2024/02/358683_source.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0082b57d1ea86bdb353"
+    },
+    "brand": "Kia",
+    "model": "Stinger GT",
+    "acceleration": 4.9,
+    "topSpeed": 270,
+    "cylinders": 6,
+    "consumption": 10.6,
+    "weight": 1825,
+    "horsepower": 368,
+    "year": 2019,
+    "img_url": "https://www.autonavigator.hu/wp-content/uploads/2021/02/291723_source-scaled.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0082b57d1ea86bdb355"
+    },
+    "brand": "Hyundai",
+    "model": "Veloster N",
+    "acceleration": 6.2,
+    "topSpeed": 250,
+    "cylinders": 4,
+    "consumption": 8.1,
+    "weight": 1381,
+    "horsepower": 275,
+    "year": 2021,
+    "img_url": "https://di-enrollment-api.s3.amazonaws.com/hyundai/models/2021/veloster-n/colors/Chalk+White.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0082b57d1ea86bdb357"
+    },
+    "brand": "Toyota",
+    "model": "Camry XSE V6",
+    "acceleration": 5.8,
+    "topSpeed": 210,
+    "cylinders": 6,
+    "consumption": 9,
+    "weight": 1625,
+    "horsepower": 301,
+    "year": 2020,
+    "img_url": "https://www.motortrend.com/uploads/sites/5/2020/12/2021-Toyota-Camry-Hybrid-XSE-28.jpg",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6729f0082b57d1ea86bdb359"
+    },
+    "brand": "Chevrolet",
+    "model": "Corvette C8",
+    "acceleration": 2.9,
+    "topSpeed": 312,
+    "cylinders": 8,
+    "consumption": 12,
+    "weight": 1527,
+    "horsepower": 495,
+    "year": 2021,
+    "img_url": "https://www.motortrend.com/uploads/2021/09/001-2021-chevrolet-corvette-stingray-c8-passenger-side-front-three-quarter-roof.jpg",
+    "__v": 0
+  }]
