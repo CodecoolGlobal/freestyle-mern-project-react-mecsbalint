@@ -77,8 +77,8 @@ See [contributors](https://github.com/CodecoolGlobal/freestyle-mern-project-reac
 
 ## Contact
 
-mecsbalint@gmail.com - https://github.com/mecsbalint
-tothkrisz2000@gmail.com - https://github.com/TothKristof
+* mecsbalint@gmail.com - https://github.com/mecsbalint
+* tothkrisz2000@gmail.com - https://github.com/TothKristof
 
 
 <!-- Links -->
