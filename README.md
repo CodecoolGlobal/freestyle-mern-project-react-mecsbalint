@@ -40,7 +40,7 @@ Or alternatively clone the repository: `git clone https://github.com/CodecoolGlo
 #### Set Up and Run
 1. **Install and Run Docker Desktop:** Download and run the installation file and follow the steps. After installation run the Docker Desktop application.
 2. **Start the Application:** Run the `docker-start.bat` batch file from the application's root folder.
-3. **Access the Application:** Open a web browser and go to `http://localhost:517`to access the frontend.
+3. **Access the Application:** Open a web browser and go to http://localhost:5173 to access the frontend.
 4. **To Stop the application:** Run the `docker-stop.bat` batch file from the application's root folder.
 
 ### Manual Setup (Without Docker)
@@ -67,7 +67,7 @@ Or alternatively clone the repository: `git clone https://github.com/CodecoolGlo
     2. Run the `npm install` command (install dependencies)
     3. Run the `npm run dev` command (run the frontend application)
 4. **Access the Application**
-    1. Open a web browser and go to `http://localhost:517`to access the frontend 
+    1. Open a web browser and go to http://localhost:5173 to access the frontend 
 
 
 ## Contribution

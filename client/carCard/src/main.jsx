@@ -1,23 +1,46 @@
-import './index.css'
-import App from './App.jsx'
+import "./index.css";
+import App from "./pages/App/App.jsx";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Login from './pages/Login/Login.jsx';
+import Drawing from "./pages/Drawing/Drawing.jsx";
+import CollectData from "./pages/CollectData/CollectData.jsx";
+import Encounter from "./pages/Encounter/Encounter.jsx";
+import Result from "./pages/Result/Result.jsx";
+import LoginPage from "./pages/LoginPage/LoginPage.jsx";
+import RegistrationPage from "./pages/RegistrationPage/RegistrationPage.jsx";
 
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
       {
         path: "/",
-        element: <App />,
+        element: <Drawing />,
       },
       {
-        path: "/login",
-        element: <Login isLogin={true}/>,
+        path: "/collect-data",
+        element: <CollectData />
       },
       {
-        path: "/registration",
-        element: <Login isLogin={false}/>,
+        path: "/encounter",
+        element: <Encounter />
+      },
+      {
+        path: "/result",
+        element: <Result />
       }
+    ],
+  },
+  {
+    path: "/login",
+    element: <LoginPage />
+  },
+  {
+    path: "/registration",
+    element: <RegistrationPage />
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -26,4 +49,3 @@ root.render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
-

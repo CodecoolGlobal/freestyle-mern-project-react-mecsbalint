@@ -1,14 +1,14 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import {useNavigate} from "react-router-dom";
 import Col from "react-bootstrap/esm/Col";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
-import "./login.css";
+import "./UserAuthForm.css";
 import loginImage from '../../assets/backgrounds/login.jpg';
-import UserForm from "../../components/UserForm/UserForm";
+import UserForm from "../UserForm/UserForm";
 
-function Login({isLogin}) {
+function UserAuthForm({isLogin}) {
   const [errorMessage, setErrorMessage] = useState(null);
 
   const navigate = useNavigate();
@@ -78,4 +78,4 @@ function Login({isLogin}) {
   );
 }
 
-export default Login;
+export default UserAuthForm;
