@@ -1,4 +1,3 @@
-import "./index.css";
 import App from "./pages/App/App.jsx";
 import React from "react";
 import ReactDOM from "react-dom/client";

@@ -8,6 +8,10 @@ import { Speedometer } from "react-bootstrap-icons";
 import { Stopwatch } from "react-bootstrap-icons";
 import { FuelPump } from "react-bootstrap-icons";
 import { useNavigate } from "react-router-dom";
+import cylinders from "../../assets/cylinders.png";
+import horsepower from "../../assets/horsepower.png";
+import weight from "../../assets/weight.png";
+
 
 
 function CardMaker({
@@ -105,7 +109,7 @@ function CardMaker({
                   <Row>
                     <img
                       className="img-icons m-auto"
-                      src="../src/assets/cylinders.png"
+                      src={cylinders}
                     ></img>
                   </Row>
                   <Row className="custom-font-size text-center m-auto middleRowHeightFixer">
@@ -141,7 +145,7 @@ function CardMaker({
                   <Row>
                     <img
                       className="img-icons m-auto"
-                      src="../src/assets/weight.png"
+                      src={weight}
                     ></img>
                   </Row>
                   <Row className="custom-font-size text-center m-auto">
@@ -160,7 +164,7 @@ function CardMaker({
                   <Row>
                     <img
                       className="img-icons m-auto"
-                      src="../src/assets/horsepower.png"
+                      src={horsepower}
                     ></img>
                   </Row>
                   <Row className="custom-font-size text-center m-auto">
