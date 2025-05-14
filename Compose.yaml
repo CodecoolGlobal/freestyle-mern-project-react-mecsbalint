@@ -9,18 +9,12 @@ services:
       - type: bind
         source: ./data
         target: /data/db
-    healthcheck:
-      test: echo 'db.adminCommand("ping")' | mongosh --quiet
-      interval: 10s
-      timeout: 5s
-      retries: 10
 
   backend:
     build: 
       context: ./server
-    depends_on:
-      db:
-        condition: service_healthy
+    depends_on: 
+      - db
     environment:
       - MONGO_URL=mongodb://user:pass@db:27017/?authSource=admin
     command: sh -c "npm run populate; npm run dev"
@@ -31,4 +25,4 @@ services:
     depends_on:
       - backend
     ports:
-      - 5173:3005
+      - 5173:80
